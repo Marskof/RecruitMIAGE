@@ -1,9 +1,21 @@
-<div *ngIf="project">
-	<h2>Détails du projet</h2>
-	<p>Nom: {{ project.name }}</p>
-	<p>Créateur: {{ project.creator }}</p>
-	<p>Date de création: {{ project.creationDate }}</p>
-	<p>Nombre de contributeurs: {{ project.contributorsCount }}</p>
-	<p>Difficulté du projet: {{ project.difficulty }}</p>
+<div class="container mt-5">
+	<div *ngIf="selectedProject" class="card">
+	  <div class="card-header">
+		<h2 class="card-title">{{ selectedProject.name }}</h2>
+	  </div>
+	  <div class="card-body">
+		<p class="card-text"><strong>Créateur : </strong> {{ selectedProject.creator }}</p>
+		<p class="card-text"><strong>Date de création : </strong> {{ selectedProject.creationDate }}</p>
+		<p class="card-text"><strong>Nombre de contributeurs : </strong> {{ selectedProject.contributors.length }}</p>
+		<p class="card-text"><strong>Dernière mise à jour : </strong> {{ selectedProject.lastUpdate }}</p>
+		<p class="card-text"><strong>Languages : </strong></p>
+		<div class="d-flex flex-wrap">
+		  <div *ngFor="let language of selectedProject.languages" class="badge bg-primary me-1 mb-1">{{ language }}</div>
+		</div>
+		<p class="card-text"><strong>Description : </strong> {{ selectedProject.description }}</p>
+		<p class="card-text"><strong>GitHub URL : </strong> <a href="{{ selectedProject.githubUrl }}" target="_blank">Cliquer ici</a></p>
+		<p class="card-text"><strong>Nombre d'étoiles : </strong> {{selectedProject.etoiles}} <span class="emoji-flag">{{selectedProject.country}}</span></p>
+	  </div>
+	</div>
   </div>
   
