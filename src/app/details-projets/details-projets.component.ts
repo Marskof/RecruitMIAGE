@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from '../services/project.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-details-projets',
@@ -10,7 +11,7 @@ import { ProjectService } from '../services/project.service';
 export class DetailsProjetsComponent implements OnInit {
   selectedProject: any; 
 
-  constructor(private route: ActivatedRoute, private projectService: ProjectService) { }
+  constructor(private router: Router,private route: ActivatedRoute, private projectService: ProjectService) { }
 
   ngOnInit(): void {
     console.log("Ng on init de detail est executé");
@@ -18,5 +19,15 @@ export class DetailsProjetsComponent implements OnInit {
       const projectId = Number(params['id']);
       this.selectedProject = this.projectService.getProjectById(projectId);
     });
-  } 
+  }
+  
+  // Fonction qui permet de retourner à la page précédente
+  revenirPageListeProjets(): void {
+    this.router.navigate(['/liste-projet']);
+
+  }
+
+  likeProject(): void {
+    this.selectedProject.etoiles++;
+  }
 }
