@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DetailsProjetsComponent } from './details-projets/details-projets.component';
 import { ListeProjetComponent } from './liste-projet/liste-projet.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DetailsProjetsComponent,
-    ListeProjetComponent
+    ListeProjetComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
