@@ -8,7 +8,7 @@ import{FormulaireConnexionComponent} from './connexion/formulaire-connexion/form
 
 
 const routes: Routes = [
-  {path: '',component: AppComponent},
+  {path: '',component: FormulaireConnexionComponent},
   {path: 'connexion', component: FormulaireConnexionComponent},
   {path: 'liste-projet', component: ListeProjetComponent},
   {path: 'details/:id', component: DetailsProjetsComponent},
