@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class DetailsProjetsComponent implements OnInit {
   selectedProject: any; 
+  estLike: boolean = false;
 
   constructor(private router: Router,private route: ActivatedRoute, private projectService: ProjectService) { }
 
@@ -28,6 +29,9 @@ export class DetailsProjetsComponent implements OnInit {
   }
 
   likeProject(): void {
-    this.selectedProject.etoiles++;
+    if(this.estLike===false){
+      this.selectedProject.etoiles++;
+      this.estLike=true;
+    }
   }
 }

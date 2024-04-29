@@ -46,7 +46,8 @@ export class ProjectService {
         githubUrl: 'https://github.com/projet3',
         image: 'assets/images/imgJava.jpg',
         etoiles: 216 
-      }
+      },
+      
     ];
   }
 
