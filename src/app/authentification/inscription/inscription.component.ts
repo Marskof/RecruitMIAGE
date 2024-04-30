@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProjectService } from '../services/project.service';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-inscription',
