@@ -8,7 +8,6 @@ import { DetailsProjetsComponent } from './details-projets/details-projets.compo
 import { ListeProjetComponent } from './liste-projet/liste-projet.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { CreationProjetComponent } from './creation-projet/creation-projet.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +15,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     DetailsProjetsComponent,
     ListeProjetComponent,
     InscriptionComponent,
-    CreationProjetComponent,
-    NavBarComponent
+    CreationProjetComponent
   ],
   imports: [
     BrowserModule,
