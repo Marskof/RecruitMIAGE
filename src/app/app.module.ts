@@ -8,6 +8,7 @@ import { DetailsProjetsComponent } from './Projets/details-projets/details-proje
 import { ListeProjetComponent } from './Projets/liste-projet/liste-projet.component';
 import { CreationProjetComponent } from './Projets/creation-projet/creation-projet.component';
 import { InscriptionComponent } from './authentification/inscription/inscription.component';
+import { NavBarComponent } from './commun/nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { InscriptionComponent } from './authentification/inscription/inscription
     DetailsProjetsComponent,
     ListeProjetComponent,
     InscriptionComponent,
-    CreationProjetComponent
+    CreationProjetComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
