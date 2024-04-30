@@ -5,6 +5,7 @@ import { DetailsProjetsComponent } from './Projets/details-projets/details-proje
 import { InscriptionComponent } from './authentification/inscription/inscription.component';
 import { FormulaireConnexionComponent } from './authentification/connexion/formulaire-connexion/formulaire-connexion.component';
 import { AppComponent } from './app.component';
+import { CreationProjetComponent } from './Projets/creation-projet/creation-projet.component';
 
 const routes: Routes = [
   {path: '',component: FormulaireConnexionComponent},
