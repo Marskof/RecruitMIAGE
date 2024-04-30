@@ -39,13 +39,9 @@ export function app(): express.Express {
       .then((html) => res.send(html))
       .catch((err) => next(err));
   });
-  
+
   return server;
 }
-
-
-
-
 
 function run(): void {
   const port = process.env['PORT'] || 4000;

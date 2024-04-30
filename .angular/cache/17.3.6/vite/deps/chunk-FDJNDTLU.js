@@ -59,7 +59,7 @@ import {
   ɵɵinject,
   ɵɵinjectAttribute,
   ɵɵstyleProp
-} from "./chunk-7PEC7C7U.js";
+} from "./chunk-2K6BZTPV.js";
 
 // node_modules/@angular/common/fesm2022/common.mjs
 var _DOM = null;
@@ -3714,7 +3714,7 @@ function isPlatformWorkerApp(platformId) {
 function isPlatformWorkerUi(platformId) {
   return platformId === PLATFORM_WORKER_UI_ID;
 }
-var VERSION = new Version("17.3.2");
+var VERSION = new Version("17.3.6");
 var _ViewportScroller = class _ViewportScroller {
 };
 _ViewportScroller.ɵprov = ɵɵdefineInjectable({
@@ -3947,17 +3947,15 @@ function createImagekitUrl(path, config) {
     src,
     width
   } = config;
-  let urlSegments;
+  const params = [];
   if (width) {
-    const params = `tr:w-${width}`;
-    urlSegments = [path, params, src];
-  } else {
-    urlSegments = [path, src];
+    params.push(`w-${width}`);
   }
-  const url = new URL(urlSegments.join("/"));
   if (config.isPlaceholder) {
-    url.searchParams.set("q", PLACEHOLDER_QUALITY);
+    params.push(`q-${PLACEHOLDER_QUALITY}`);
   }
+  const urlSegments = params.length ? [path, `tr:${params.join(",")}`, src] : [path, src];
+  const url = new URL(urlSegments.join("/"));
   return url.href;
 }
 var imgixLoaderInfo = {
@@ -5026,9 +5024,9 @@ export {
 
 @angular/common/fesm2022/common.mjs:
   (**
-   * @license Angular v17.3.2
-   * (c) 2010-2022 Google LLC. https://angular.io/
+   * @license Angular v17.3.6
+   * (c) 2010-2024 Google LLC. https://angular.io/
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-FTCMKMFL.js.map
+//# sourceMappingURL=chunk-FDJNDTLU.js.map
