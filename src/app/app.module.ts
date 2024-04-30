@@ -4,9 +4,9 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DetailsProjetsComponent } from './details-projets/details-projets.component';
-import { ListeProjetComponent } from './liste-projet/liste-projet.component';
-import { CreationProjetComponent } from './creation-projet/creation-projet.component';
+import { DetailsProjetsComponent } from './Projets/details-projets/details-projets.component';
+import { ListeProjetComponent } from './Projets/liste-projet/liste-projet.component';
+import { CreationProjetComponent } from './Projets/creation-projet/creation-projet.component';
 import { InscriptionComponent } from './authentification/inscription/inscription.component';
 
 

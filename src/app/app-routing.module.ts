@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListeProjetComponent } from './liste-projet/liste-projet.component';
-import { DetailsProjetsComponent } from './details-projets/details-projets.component';
+import { ListeProjetComponent } from './Projets/liste-projet/liste-projet.component';
+import { DetailsProjetsComponent } from './Projets/details-projets/details-projets.component';
 import { InscriptionComponent } from './authentification/inscription/inscription.component';
 import { FormulaireConnexionComponent } from './authentification/connexion/formulaire-connexion/formulaire-connexion.component';
 import { AppComponent } from './app.component';
