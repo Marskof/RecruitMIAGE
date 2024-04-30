@@ -1,40 +1,40 @@
+<!-- formulaire-connexion.component.html -->
 
-  <header>
-    <h1>RecruitMIAGE</h1>
-  </header>
-  
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-6">
-        <div class="form-container">
-          <h2>Connexion</h2>
+<header>
+  <h1>RecruitMIAGE</h1>
+</header>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="form-container">
+        <h2>Connexion</h2>
+        <br>
+        <form (submit)="onSubmit()">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Nom d'utilisateur ou adresse mail :">
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
+          </div>
+          <div id="mdp">
+            <a class="mdp" href="#">Mot de passe oublié ?</a>
+          </div>
           <br>
-          <form>
-            <div class="mb-3">
-              <input type="text" class="form-control" id="username" name="username" placeholder="Nom d'utilisateur ou adresse mail :">
-            </div>
-            <div class="mb-3">
-              <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
-            </div>
-            <div id="mdp">
-                <a class="mdp" href="#">Mot de passe oublié ?</a>
-            </div>
-            <br>
-            <div class="mb-3">
+          <div class="mb-3">
             <button type="submit" class="btn btn-primary float-end">Se connecter</button>
-            </div>
-            <br>
-            <div class="mb-3">
-            <button type="submit" class="btn btn-primary float-end">S'inscrire</button>
-            </div>
-          </form>
-  
-        </div>
+          </div>
+          <br>
+          <div class="mb-3">
+            <button type="button" class="btn btn-primary float-end">S'inscrire</button>
+          </div>
+        </form>
+
       </div>
     </div>
   </div>
-  
-  <footer class="text-center mt-5">
-    Projet Web - L3 MIAGE
-  </footer>
+</div>
 
+<footer class="text-center mt-5">
+  Projet Web - L3 MIAGE
+</footer>

@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { ProjectService } from '../../../services/project.service';
+// formulaire-connexion.component.ts
 
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-formulaire-connexion',
   templateUrl: './formulaire-connexion.component.html',
-  styleUrl: './formulaire-connexion.component.css'
+  styleUrls: ['./formulaire-connexion.component.css']
 })
 export class FormulaireConnexionComponent {
+  constructor() { }
 
-  constructor(private router: Router, private projectService: ProjectService) { }
-
+  onSubmit() {
+    // Logique de gestion de la soumission du formulaire
+    console.log('Formulaire soumis');
+  }
 }
