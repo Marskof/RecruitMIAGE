@@ -1,1 +1,24 @@
-    
+body {
+    font-family: "Poppins", sans-serif;
+  }
+  header {
+    text-align: center;
+  }
+  .form-container {
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 30px;
+    max-width: 450px;
+  }
+  h2{
+    text-align: center;
+  }
+  .mb-3 {
+    display: flex;
+    align-items: center;
+  }    
+
+  .mdp{
+    text-align: center;
+    color: blue;
+  }
