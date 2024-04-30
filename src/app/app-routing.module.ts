@@ -12,7 +12,8 @@ const routes: Routes = [
   {path: 'connexion', component: FormulaireConnexionComponent},
   {path: 'liste-projet', component: ListeProjetComponent},
   {path: 'details/:id', component: DetailsProjetsComponent},
-  {path: 'inscription', component: InscriptionComponent}
+  {path: 'inscription', component: InscriptionComponent},
+  {path: 'creation-projet', component: CreationProjetComponent}
 ];
 
 @NgModule({
