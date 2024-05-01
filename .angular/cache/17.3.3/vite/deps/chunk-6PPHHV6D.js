@@ -3,7 +3,7 @@ import {
   XhrFactory,
   isPlatformServer,
   parseCookieValue
-} from "./chunk-FDJNDTLU.js";
+} from "./chunk-FTCMKMFL.js";
 import {
   APP_BOOTSTRAP_LISTENER,
   ApplicationRef,
@@ -43,7 +43,7 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-2K6BZTPV.js";
+} from "./chunk-7PEC7C7U.js";
 
 // node_modules/@angular/common/fesm2022/http.mjs
 var HttpHandler = class {
@@ -2138,9 +2138,8 @@ function transferCacheInterceptorFn(req, next) {
       url
     }));
   }
-  const isServer = isPlatformServer(inject(PLATFORM_ID));
   return next(req).pipe(tap((event) => {
-    if (event instanceof HttpResponse && isServer) {
+    if (event instanceof HttpResponse) {
       transferState.set(storeKey, {
         [BODY]: event.body,
         [HEADERS]: getFilteredHeaders(event.headers, headersToInclude),
@@ -2287,9 +2286,9 @@ export {
 
 @angular/common/fesm2022/http.mjs:
   (**
-   * @license Angular v17.3.6
-   * (c) 2010-2024 Google LLC. https://angular.io/
+   * @license Angular v17.3.2
+   * (c) 2010-2022 Google LLC. https://angular.io/
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-NXQTE4PI.js.map
+//# sourceMappingURL=chunk-6PPHHV6D.js.map

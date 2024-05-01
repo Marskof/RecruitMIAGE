@@ -3,13 +3,13 @@ body {
   }
   header {
     text-align: center;
-    background-color: #A8D38E;
   }
   .form-container {
     border-radius: 10px;
     background-color: #fff;
     padding: 30px;
     max-width: 450px;
+    color: black;
   }
   h2{
     text-align: center;
@@ -17,4 +17,12 @@ body {
   .mb-3 {
     display: flex;
     align-items: center;
+  }
+
+  .form-control{
+    color: grey;
+  }
+
+  .form-group{
+    color: grey;
   }
