@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const projetsController = require('./controllers/projetsController');
+const authentificationController = require('./controllers/authentificationController');
+
 
 const app = express();
 
@@ -22,20 +24,19 @@ mongoose.connect('mongodb+srv://marouane:marouane@recruitmiage.itau9ul.mongodb.n
   });
 
 
-// Créer un projet
+// Routes pour les projets
 app.post('/api/projets', projetsController.createProjet);
-
-// Lire tous les projets
 app.get('/api/projets', projetsController.getAllProjets);
-
-// Lire un projet par ID
 app.get('/api/projets/:id', projetsController.getProjetById);
-
-// Mettre à jour un projet par ID
 app.put('/api/projets/:id', projetsController.updateProjet);
-
-// Supprimer un projet par ID
 app.delete('/api/projets/:id', projetsController.deleteProjet);
+
+// Routes pour l'authentification
+app.post('/api/authentification', authentificationController.createUser);
+app.get('/api/authentification', authentificationController.getAllUsers);
+app.get('/api/authentification/:id', authentificationController.getUserById);
+app.put('/api/authentification/:id', authentificationController.updateUser);
+app.delete('/api/authentification/:id', authentificationController.deleteUser);
 
 
 

@@ -1,50 +1,34 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { utilisateur } from '../models/authentification';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/auth'; // Mettez l'URL de votre backend ici
+
+  private apiUrl = '/api/authentification';
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<any> {
-    const credentials = { username, password };
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials)
-      .pipe(
-        catchError(this.handleError)
-      );
+  createUser(user: utilisateur): Observable<utilisateur> {
+    return this.http.post<utilisateur>(`${this.apiUrl}`, user);
   }
 
-  /*
-  logout(): Observable<any> {
-    // Vous pouvez éventuellement effectuer des opérations de déconnexion côté client ici
-    // Par exemple, effacer les tokens d'authentification stockés localement
-    // Si nécessaire, vous pouvez également envoyer une requête de déconnexion au backend
-    return of(null); // Dans cet exemple, nous retournons simplement un Observable vide
-  }
-  */
-
-  register(userData: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/register`, userData)
-      .pipe(
-        catchError(this.handleError)
-      );
+  getAllUsers(): Observable<utilisateur[]> {
+    return this.http.get<utilisateur[]>(`${this.apiUrl}`);
   }
 
-  private handleError(error: any) {
-    let errorMessage = 'Une erreur est survenue.';
-    if (error.error instanceof ErrorEvent) {
-      // Erreur côté client
-      errorMessage = `Erreur : ${error.error.message}`;
-    } else {
-      // Erreur côté serveur
-      errorMessage = `Code d'erreur : ${error.status}\nMessage : ${error.message}`;
-    }
-    console.error(errorMessage);
-    return throwError(errorMessage);
+  getUserById(id: string): Observable<utilisateur> {
+    return this.http.get<utilisateur>(`${this.apiUrl}/${id}`);
+  }
+
+  updateUser(id: string, user: utilisateur): Observable<utilisateur> {
+    return this.http.put<utilisateur>(`${this.apiUrl}/${id}`, user);
+  }
+
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
 }

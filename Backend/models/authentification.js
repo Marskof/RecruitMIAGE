@@ -8,3 +8,7 @@ const authentificationSchema = new mongoose.Schema({
     password: { type: String, required: true }
     });
     
+
+const Authentification = mongoose.model('Authentification', authentificationSchema);
+
+module.exports = Authentification;

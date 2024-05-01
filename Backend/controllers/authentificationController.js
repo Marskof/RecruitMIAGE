@@ -17,7 +17,7 @@ exports.getAllUsers = (req, res, next) => {
         .then(users => res.status(200).json(users))
         .catch(error => res.status(400).json({ error }));
 };
-
+    
 // Lire un utilisateur par ID
 exports.getUserById = (req, res, next) => {
     Authentification.findById(req.params.id)
