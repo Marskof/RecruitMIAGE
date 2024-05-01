@@ -6,7 +6,7 @@
           <h5 class="card-title">{{ project.name }}</h5>
         </div>
         <div class="card-body">
-          <img [src]="project.image" class="card-img-top" alt="Image du projet">
+          <img [src]="'http://localhost:3000/images/' + project.image" class="card-img-top" alt="Image du projet">
           <p class="card-text">Nombre de contributeurs: {{ project.contributors.length }}</p>
         </div>
       </div>
