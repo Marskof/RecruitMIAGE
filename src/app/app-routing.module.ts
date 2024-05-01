@@ -7,6 +7,8 @@ import { FormulaireConnexionComponent } from './authentification/connexion/formu
 import { AppComponent } from './app.component';
 import { CreationProjetComponent } from './Projets/creation-projet/creation-projet.component';
 
+
+//faire gaffe au auth guard
 const routes: Routes = [
   {path: '',component: FormulaireConnexionComponent},
   {path: 'connexion', component: FormulaireConnexionComponent},

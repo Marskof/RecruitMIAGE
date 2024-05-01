@@ -1,7 +1,7 @@
 import {
   Title
-} from "./chunk-PWSH3WHJ.js";
-import "./chunk-6PPHHV6D.js";
+} from "./chunk-R4BDEQJF.js";
+import "./chunk-NXQTE4PI.js";
 import {
   DOCUMENT,
   HashLocationStrategy,
@@ -10,7 +10,7 @@ import {
   LocationStrategy,
   PathLocationStrategy,
   ViewportScroller
-} from "./chunk-FTCMKMFL.js";
+} from "./chunk-FDJNDTLU.js";
 import {
   APP_BOOTSTRAP_LISTENER,
   APP_INITIALIZER,
@@ -113,7 +113,7 @@ import {
   ɵɵloadQuery,
   ɵɵqueryRefresh,
   ɵɵsanitizeUrlOrResourceUrl
-} from "./chunk-7PEC7C7U.js";
+} from "./chunk-2K6BZTPV.js";
 
 // node_modules/@angular/router/fesm2022/router.mjs
 var PRIMARY_OUTLET = "primary";
@@ -1808,12 +1808,29 @@ var RouterOutlet = _RouterOutlet;
     }]
   });
 })();
-var OutletInjector = class {
+var OutletInjector = class _OutletInjector {
+  /**
+   * This injector has a special handing for the `ActivatedRoute` and
+   * `ChildrenOutletContexts` tokens: it returns corresponding values for those
+   * tokens dynamically. This behavior is different from the regular injector logic,
+   * when we initialize and store a value, which is later returned for all inject
+   * requests.
+   *
+   * In some cases (e.g. when using `@defer`), this dynamic behavior requires special
+   * handling. This function allows to identify an instance of the `OutletInjector` and
+   * create an instance of it without referring to the class itself (so this logic can
+   * be invoked from the `core` package). This helps to retain dynamic behavior for the
+   * mentioned tokens.
+   *
+   * Note: it's a temporary solution and we should explore how to support this case better.
+   */
+  __ngOutletInjector(parentInjector) {
+    return new _OutletInjector(this.route, this.childContexts, parentInjector);
+  }
   constructor(route, childContexts, parent) {
     this.route = route;
     this.childContexts = childContexts;
     this.parent = parent;
-    this.__ngOutletInjector = true;
   }
   get(token, notFoundValue) {
     if (token === ActivatedRoute) {
@@ -5499,7 +5516,7 @@ function mapToCanDeactivate(providers) {
 function mapToResolve(provider) {
   return (...params) => inject(provider).resolve(...params);
 }
-var VERSION = new Version("17.3.2");
+var VERSION = new Version("17.3.6");
 export {
   ActivatedRoute,
   ActivatedRouteSnapshot,
@@ -5582,8 +5599,8 @@ export {
 
 @angular/router/fesm2022/router.mjs:
   (**
-   * @license Angular v17.3.2
-   * (c) 2010-2022 Google LLC. https://angular.io/
+   * @license Angular v17.3.6
+   * (c) 2010-2024 Google LLC. https://angular.io/
    * License: MIT
    *)
 */
