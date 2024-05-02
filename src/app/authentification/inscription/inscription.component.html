@@ -1,44 +1,42 @@
-  <header>
-    <h1>RecruitMIAGE</h1>
-  </header>
-  
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-6">
-        <div class="form-container">
-          <h2>Inscription</h2>
-  
-          <form>
-            <div class="mb-3">
-              <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
-            </div>
-            <div class="mb-3">
-              <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom">
-            </div>
-            <div class="mb-3">
-              <input type="text" class="form-control" id="username" name="username" placeholder="Nom d'utilisateur">
-            </div>
-            <div class="mb-3">
-              <input type="text" class="form-control" id="login" name="login" placeholder="Adresse mail">
-            </div>
-            <div class="mb-3">
-              <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
-            </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="cgu">
-              <label class="form-check-label" for="cgu">J'accepte les conditions générales d'utilisation</label>
-            </div>
-            <div>
-            <a routerLink="/inscription" class="btn btn-primary float-end">S'inscrire</a>
+<header>
+  <h1>RecruitMIAGE</h1>
+</header>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="form-container">
+        <h2>Inscription</h2>
+
+        <form (submit)="createUser()" #inscriptionForm="ngForm">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="utilisateur.nom" placeholder="Nom" required>
           </div>
-          </form>
-  
-        </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="utilisateur.prenom" placeholder="Prénom" required>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="username" name="username" [(ngModel)]="utilisateur.username" placeholder="Nom d'utilisateur" required>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="login" name="login" [(ngModel)]="utilisateur.email" placeholder="Adresse mail" required>
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="utilisateur.motDePasse" placeholder="Mot de passe" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="cgu" name="cgu" [(ngModel)]="utilisateur.cgu" required>
+            <label class="form-check-label" for="cgu">J'accepte les conditions générales d'utilisation</label>
+          </div>
+          
+          <button type="submit" class="btn btn-primary float-end" [disabled]="!inscriptionForm.valid">S'inscrire</button>
+        </form>
+
       </div>
     </div>
   </div>
-  
-  <footer class="text-center mt-5">
-    Projet Web - L3 MIAGE
-  </footer>
+</div>
 
+<footer class="text-center mt-5">
+  Projet Web - L3 MIAGE
+</footer>

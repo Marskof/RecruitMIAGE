@@ -2,14 +2,34 @@ const Authentification = require('../models/authentification');
 
 // Créer un utilisateur
 exports.createUser = (req, res, next) => {
-    delete req.body._id;
+    // Vérifie si req.body est défini et contient les données attendues
+    if (!req.body || Object.keys(req.body).length === 0) {
+        return res.status(400).json({ error: 'Aucune donnée envoyée dans le corps de la requête' });
+    }
+
+    const { nom, prenom, username, email, password, cgu } = req.body;
+
+    // Vérifie si toutes les données requises sont présentes
+    if (!nom || !prenom || !username || !email || !password || !cgu) {
+        return res.status(400).json({ error: 'Toutes les données requises ne sont pas fournies' });
+    }
+
+    // Crée un nouvel utilisateur avec les données fournies
     const user = new Authentification({
-        ...req.body
+        nom,
+        prenom,
+        username,
+        email,
+        password,
+        cgu
     });
+
+    // Sauvegarde l'utilisateur dans la base de données
     user.save()
-        .then(() => res.status(201).json({ message: 'Utilisateur enregistré !'}))
+        .then(() => res.status(201).json({ message: 'Utilisateur enregistré !' }))
         .catch(error => res.status(400).json({ error }));
 };
+
 
 // Lire tous les utilisateurs
 exports.getAllUsers = (req, res, next) => {

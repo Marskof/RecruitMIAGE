@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 const path = require('path');
 const projetsController = require('./controllers/projetsController');
 const authentificationController = require('./controllers/authentificationController');
-
+const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.json());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 

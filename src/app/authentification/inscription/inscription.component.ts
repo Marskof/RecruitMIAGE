@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProjectService } from '../../services/project.service';
+import { utilisateur } from '../../models/authentification';
+import { AuthService } from '../../services/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-inscription',
@@ -9,7 +11,31 @@ import { ProjectService } from '../../services/project.service';
 })
 export class InscriptionComponent {
 
-  constructor(private router: Router, private projectService: ProjectService) { }
+  constructor(private router: Router, private authService: AuthService) { }
+
+  utilisateur: utilisateur = {
+    nom: '',
+    prenom: '',
+    username: '',
+    email: '',
+    motDePasse: '',
+    cgu: false
+  };
+
+  createUser() {
+    console.log('Données utilisateur à envoyer : ', this.utilisateur); // Affiche les données dans la console
+    this.authService.createUser(this.utilisateur).subscribe(
+      (response) => {
+        console.log('Réponse du serveur : ', response); // Affiche la réponse du serveur dans la console
+        console.log('Utilisateur créé avec succès : ', response);
+        // Rediriger ou effectuer d'autres actions après la création de l'utilisateur
+      },
+      (error) => {
+        console.error('Erreur lors de la création de l\'utilisateur : ', error);
+      }
+    );
+  }
+  
 
 
 }

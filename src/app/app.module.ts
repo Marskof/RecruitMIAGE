@@ -10,7 +10,7 @@ import { CreationProjetComponent } from './Projets/creation-projet/creation-proj
 import { InscriptionComponent } from './authentification/inscription/inscription.component';
 import { NavBarComponent } from './commun/nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [
