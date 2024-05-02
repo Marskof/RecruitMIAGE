@@ -8,7 +8,7 @@ import { Project } from '../models/projets';
 })
 export class ProjectService {
 
-  private apiUrl = 'http://localhost:3000/api/projets'; // Remplacez cette URL par l'URL de votre API REST côté serveur
+  private apiUrl = 'http://localhost:3000/api/projets'; 
 
   constructor(private http: HttpClient) { }
 
@@ -39,4 +39,12 @@ export class ProjectService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url);
   }
+
+  //Ajouter une etoile à un projet
+  addEtoile(projectId: String): Observable<any> {
+    const url = `${this.apiUrl}/${projectId}/like`;
+    return this.http.patch(url, {});
+  }
+
+
 }

@@ -30,6 +30,11 @@ app.get('/api/projets', projetsController.getAllProjets);
 app.get('/api/projets/:id', projetsController.getProjetById);
 app.put('/api/projets/:id', projetsController.updateProjet);
 app.delete('/api/projets/:id', projetsController.deleteProjet);
+app.patch('/api/projets/:id/like', projetsController.updateProjetStars);
+
+
+
+
 
 // Routes pour l'authentification
 app.post('/api/authentification', authentificationController.createUser);

@@ -43,3 +43,17 @@ exports.deleteProjet = (req, res, next) => {
         .then(() => res.status(200).json({ message: 'Projet supprimé' }))
         .catch(error => res.status(400).json({ error }));
 };
+
+// Mettre à jour le nombre de etoiles d'un projet par son id
+exports.updateProjetStars = (req, res, next) => {
+    Projets.findById(req.params.id)
+        .then(projet => {
+            if (!projet) {
+                return res.status(404).json({ message: 'Projet non trouvé' });
+            }
+            projet.etoiles++;
+            return projet.save();
+        })
+        .then(() => res.status(200).json({ message: 'Nombre etoiles du projet mis à jour' }))
+        .catch(error => res.status(400).json({ error }));
+};
