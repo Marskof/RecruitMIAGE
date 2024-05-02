@@ -8,7 +8,7 @@ import { utilisateur } from '../models/authentification';
 })
 export class AuthService {
 
-  private apiUrl = '/api/authentification';
+  private apiUrl = 'http://localhost:3000/api/authentification'; // Mettez à jour l'URL ici
 
   constructor(private http: HttpClient) { }
 

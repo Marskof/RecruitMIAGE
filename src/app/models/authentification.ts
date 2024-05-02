@@ -3,6 +3,6 @@ export interface utilisateur {
     prenom: string;
     username: string;
     email: string;
-    motDePasse: string;
+    password: string;
     cgu: boolean;
 }

@@ -18,7 +18,7 @@ export class InscriptionComponent {
     prenom: '',
     username: '',
     email: '',
-    motDePasse: '',
+    password: '',
     cgu: false
   };
 
