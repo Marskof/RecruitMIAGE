@@ -36,4 +36,8 @@ export class DetailsProjetsComponent implements OnInit {
       this.estLike = true;
     }
   }
+
+
+  //Rajouter bouton participer au projet
+  
 }

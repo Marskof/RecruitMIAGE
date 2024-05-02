@@ -36,4 +36,7 @@ export class ListeProjetComponent implements OnInit {
     console.log(project._id);
     this.router.navigate(['/details', project._id]);
   }
+
+  //Ajouter filtre pour filtrer selon les projets java etc, nombre de participants, nombre d'etoiles, last update
+
 }

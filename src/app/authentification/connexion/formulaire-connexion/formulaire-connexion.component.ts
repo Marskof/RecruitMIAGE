@@ -14,4 +14,6 @@ export class FormulaireConnexionComponent {
     // Logique de gestion de la soumission du formulaire
     console.log('Formulaire soumis');
   }
+
+  
 }
