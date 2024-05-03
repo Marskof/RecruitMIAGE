@@ -8,7 +8,7 @@ import { Project } from '../models/projets';
 })
 export class ProjectService {
 
-  private apiUrl = 'http://localhost:3000/api/projets'; 
+  private apiUrl = 'http://localhost:3000/api/projets';
 
   constructor(private http: HttpClient) { }
 
@@ -24,7 +24,13 @@ export class ProjectService {
   }
 
   // Ajouter un nouveau projet
-  addProject(project: Project): Observable<Project> {
+  addProject(project: {
+    matieres: string;
+    nombrePlaces: number;
+    name: string;
+    description: string;
+    difficulte: number
+  }): Observable<Project> {
     return this.http.post<Project>(this.apiUrl, project);
   }
 

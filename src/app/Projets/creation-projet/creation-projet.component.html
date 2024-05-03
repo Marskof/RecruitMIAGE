@@ -1,54 +1,40 @@
-  <header>
-    <h1>RecruitMIAGE</h1>
-  </header>
-  
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-6">
-        <div class="form-container">
-          <h2>Créer un projet</h2>
-          <br>
-          <form>
-            <div class="mb-3">
-              <input type="text" class="form-control" id="username" name="username" placeholder="Nom du projet :">
-            </div>
-            <div class="mb-3">
-  <textarea class="form-control" id="desc" rows="5" placeholder="Description du projet :"></textarea>
+<form (ngSubmit)="onSubmit()">
+<div class="mb-3">
+  <label for="NomProjet" class="form-label">Nom de votre projet</label>
+  <textarea class="form-control" id="NomProjet" name="nom" rows="1" placeholder="Nom du projet :" [(ngModel)]="name"></textarea>
 </div>
-            <div class="mb-3">
-              <input type="text" class="form-control" id="matiere" name="matierer" placeholder="Matières principales du projet :">
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Nombre de places :</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="formControlRange">Difficulté :                    </label>
-              <input type="range" class="form-control-range" id="formControlRange">
-            </div>     
-            <br><br>       
-            <div class="mb-3">
-            <button type="submit" class="btn btn-primary float-end">Créer le projet</button>
-            </div>
-          </form>
-  
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <footer class="text-center mt-5">
-    Projet Web - L3 MIAGE
-  </footer>
+<div class="mb-3">
+  <label for="Desc" class="form-label">Décrire votre projet</label>
+  <textarea class="form-control" id="Desc" name="description" rows="3" placeholder="Description du projet :" [(ngModel)]="description"></textarea>
+</div>
+  <div>
+    <label for="NomProjet" class="form-label">Combien de personnes?</label>
+    <select class="form-select" aria-label="Default select example" name="nbplace" id="NbPlaces" [(ngModel)]="nombrePlaces">
+      <option [disabled]="true" selected>Nombre de places</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
 
+
+  </div>
+
+
+  <input type="range" class="form-control-range" name="difficulte" id="formControlRange" [(ngModel)]="difficulte">
+  <button type="submit" class="btn btn-primary float-end">Créer le projet</button>
+</form>
+
+
+
+matieres: string;
+nombrePlaces: number;
+name: string;
+description: string;
+difficulte: number

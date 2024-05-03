@@ -11,6 +11,7 @@ const projectSchema = new mongoose.Schema({
   languages: [String],
   githubUrl: String,
   image: String,
+  nombrePlaces : Number,
   etoiles: Number
 });
 
