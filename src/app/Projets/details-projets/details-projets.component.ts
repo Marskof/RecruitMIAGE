@@ -47,4 +47,21 @@ export class DetailsProjetsComponent implements OnInit {
   // Fonction pour participer au projet
   participerProjet(): void {
   }
+
+  modifierProjet(): void {
+    // Redirige l'utilisateur vers la page de modification du projet avec l'ID du projet
+    if (this.selectedProject) {
+      this.router.navigate(['/modifier-projet', this.selectedProject._id]);
+    }
+  }
+  
+
+  estCreateurProjet(): boolean {
+    // Le !! verifie si la valeur est 
+    //return !!this.selectedProject && this.selectedProject.creator === "Nom de l'utilisateur connecté";
+
+    return !!this.selectedProject;
+  }
+  
+  
 }

@@ -11,6 +11,7 @@ import { InscriptionComponent } from './authentification/inscription/inscription
 import { NavBarComponent } from './commun/nav-bar/nav-bar.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ModifierProjetComponent } from './Projets/modifier-projet/modifier-projet.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     ListeProjetComponent,
     InscriptionComponent,
     CreationProjetComponent,
-    NavBarComponent
+    NavBarComponent,
+    ModifierProjetComponent
   ],
   imports: [
     BrowserModule,
