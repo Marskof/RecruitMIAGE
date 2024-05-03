@@ -63,5 +63,19 @@ export class DetailsProjetsComponent implements OnInit {
     return !!this.selectedProject;
   }
   
+
+  supprimerProjet(): void {
+    if (this.selectedProject && this.estCreateurProjet()) {
+        this.projectService.deleteProject(this.selectedProject._id).subscribe(() => {
+            // Rediriger l'utilisateur vers la page de liste des projets après la suppression du projet
+            this.router.navigate(['/liste-projet']);
+        }, error => {
+            console.error('Erreur lors de la suppression du projet :', error);
+        });
+    } else {
+        console.error('Vous n\'êtes pas autorisé à supprimer ce projet.');
+    }
+}
+
   
 }
