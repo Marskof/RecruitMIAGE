@@ -10,7 +10,6 @@
   <div>
     <label for="NomProjet" class="form-label">Combien de personnes?</label>
     <select class="form-select" aria-label="Default select example" name="nbplace" id="NbPlaces" [(ngModel)]="nombrePlaces">
-      <option [disabled]="true" selected>Nombre de places</option>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -22,19 +21,95 @@
       <option value="9">9</option>
       <option value="10">10</option>
     </select>
+  </div>
 
+<label class="form-label">Matiere(s) concerné(e)(s) :</label>
+  <div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" name="MatiereJAVA" id="MatiereJAVA" value="JAVA" (change)="updateLanguages($event)">
+      <label class="form-check-label" for="MatiereJAVA">JAVA</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" name="MatiereHTML" id="MatiereHTML" value="HTML" (change)="updateLanguages($event)">
+      <label class="form-check-label" for="MatiereHTML">HTML</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" name="MatiereCSS" id="MatiereCSS" value="CSS" (change)="updateLanguages($event)">
+      <label class="form-check-label" for="MatiereCSS">CSS</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" name="MatiereANGULAR" id="MatiereANGULAR" value="ANGULAR" (change)="updateLanguages($event)">
+      <label class="form-check-label" for="MatiereANGULAR">ANGULAR</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" name="MatierePYTHON" id="MatierePYTHON" value="PYTHON" (change)="updateLanguages($event)">
+      <label class="form-check-label" for="MatierePYTHON">PYTHON</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" name="MatiereJS" id="MatiereJS" value="JAVASCRIPT" (change)="updateLanguages($event)">
+      <label class="form-check-label" for="MatiereJS">JAVASCRIPT</label>
+    </div>
+  </div>
 
+  <label class="form-label">Matiere dominante :</label>
+  <div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="java" id="java" value="../images/imgJava.jpg" [(ngModel)]="image">
+      <label class="form-check-label" for="java">JAVA</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="html" id="html" value="rajt image html" [(ngModel)]="image">
+      <label class="form-check-label" for="html">HTML</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="css" id="css" value="rajt image css" [(ngModel)]="image">
+      <label class="form-check-label" for="css">CSS</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="ang" id="ang" value="rajt image angular" [(ngModel)]="image">
+      <label class="form-check-label" for="ang">ANGULAR</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="python" id="python" value="../images/imgPython.png" [(ngModel)]="image">
+      <label class="form-check-label" for="python">PYTHON</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="js" id="js" value="../images/imgJS.jpg" [(ngModel)]="image">
+      <label class="form-check-label" for="js">JAVASCRIPT</label>
+    </div>
   </div>
 
 
-  <input type="range" class="form-control-range" name="difficulte" id="formControlRange" [(ngModel)]="difficulte">
+
+
+
+  <div class="mb-3">
+    <label for="urllink" class="form-label">lien vers GitHub </label>
+    <div class="input-group">
+      <input type="text" class="form-control"  name="urllink" id="urllink" aria-describedby="basic-addon3 basic-addon4" [(ngModel)]="githubUrl">
+    </div>
+    <div class="form-text" id="basic-addon4">si vous n'avez pas de lien taper : none</div>
+  </div>
+
+  <div>
+    <label for="NomProjet" class="form-label">Niveau requis pour le projet :</label>
+    <select class="form-select" aria-label="Default select example" name="diff" id="difficulter" [(ngModel)]="difficulte" >
+      <option value="L1">L1</option>
+      <option value="L2">L2</option>
+      <option value="L3">L3</option>
+      <option value="M1">M1</option>
+      <option value="M2">M2</option>
+    </select>
+  </div>
+
   <button type="submit" class="btn btn-primary float-end">Créer le projet</button>
+
+
 </form>
 
 
 
-matieres: string;
-nombrePlaces: number;
-name: string;
-description: string;
-difficulte: number
+creator: 'Créateur 2',
+contributors: ['Membre 4', 'Membre 5'],
+lastUpdate: '2022-04-05',
+

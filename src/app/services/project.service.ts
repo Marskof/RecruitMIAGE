@@ -9,6 +9,7 @@ import { Project } from '../models/projets';
 export class ProjectService {
 
   private apiUrl = 'http://localhost:3000/api/projets';
+  private languages: any;
 
   constructor(private http: HttpClient) { }
 
@@ -25,14 +26,18 @@ export class ProjectService {
 
   // Ajouter un nouveau projet
   addProject(project: {
-    matieres: string;
     nombrePlaces: number;
+    languages: [String] | undefined;
     name: string;
     description: string;
+    githubUrl:string;
+    etoiles: number;
+    creationDate:string;
     difficulte: number
   }): Observable<Project> {
     return this.http.post<Project>(this.apiUrl, project);
   }
+
 
   // Mettre à jour un projet existant
   updateProject(project: Project): Observable<Project> {

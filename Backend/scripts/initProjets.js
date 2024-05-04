@@ -24,6 +24,7 @@ const projectsData = [
     githubUrl: 'https://github.com/projet1',
     image: '../images/imgJS.jpg',
     nombrePlaces :5,
+    difficulte : 'L1',
     etoiles: 212
   },
   {
@@ -37,6 +38,7 @@ const projectsData = [
     githubUrl: 'https://github.com/projet2',
     image: '../images/imgJava.jpg',
     nombrePlaces :5,
+    difficulte : 'L1',
     etoiles: 213
   },
   {
@@ -50,6 +52,7 @@ const projectsData = [
     githubUrl: 'https://github.com/projet3',
     image: '../images/imgPython.png',
     nombrePlaces :5,
+    difficulte : 'L1',
     etoiles: 216
   }
   // Ajoutez autant d'objets de projet que vous le souhaitez
