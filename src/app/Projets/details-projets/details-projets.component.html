@@ -1,22 +1,24 @@
 <div class="container mt-5 bg-dark text-light"> <!-- Ajoutez la classe "bg-dark" pour le fond sombre et "text-light" pour le texte clair -->
-	<button class="btn btn-primary" (click)="revenirPageListeProjets()">Retour à la liste</button>
-	<div *ngIf="selectedProject" class="card bg-dark text-light"> <!-- Ajoutez les classes "bg-dark" et "text-light" à la carte pour le fond sombre et le texte clair -->
-	  <div class="card-header">
-		<h2 class="card-title">{{ selectedProject.name }}</h2>
-		<button class="btn btn-link text-light" (click)="likeProject()">&#x2764;</button> <!-- Ajoutez la classe "text-light" pour le texte clair -->
-	  </div>
-	  <div class="card-body">
-		<p class="card-text"><strong>Créateur : </strong> {{ selectedProject.creator }}</p>
-		<p class="card-text"><strong>Date de création : </strong> {{ selectedProject.creationDate }}</p>
-		<p class="card-text"><strong>Nombre de contributeurs : </strong> {{ selectedProject.contributors.length }}</p>
-		<p class="card-text"><strong>Dernière mise à jour : </strong> {{ selectedProject.lastUpdate }}</p>
-		<p class="card-text"><strong>Languages : </strong></p>
-		<div class="d-flex flex-wrap">
-		  <div *ngFor="let language of selectedProject.languages" class="badge bg-primary me-1 mb-1">{{ language }}</div>
-		</div>
-		<p class="card-text"><strong>Description : </strong> {{ selectedProject.description }}</p>
-		<p class="card-text"><strong>GitHub URL : </strong> <a href="{{ selectedProject.githubUrl }}" target="_blank" class="text-light">Cliquer ici</a></p> <!-- Ajoutez la classe "text-light" pour le texte clair -->
-		<p class="card-text"><strong>Nombre d'étoiles : </strong> {{selectedProject.etoiles}}</p>
-	</div>
-	</div>
-</div>
+    <button class="btn btn-primary" (click)="revenirPageListeProjets()">Retour à la liste</button>
+    <div *ngIf="selectedProject" class="card bg-dark text-light"> <!-- Ajoutez les classes "bg-dark" et "text-light" à la carte pour le fond sombre et le texte clair -->
+      <div class="card-header">
+        <h2 class="card-title">{{ selectedProject.name }}</h2>
+        <button class="btn btn-link text-light" (click)="likeProject()">&#x2764;</button> <!-- Ajoutez la classe "text-light" pour le texte clair -->
+      </div>
+      <div class="card-body">
+        <p class="card-text"><strong>Créateur : </strong> {{ selectedProject.creator }}</p>
+        <p class="card-text"><strong>Date de création : </strong> {{ selectedProject.creationDate }}</p>
+        <p class="card-text"><strong>Nombre de contributeurs : </strong> {{ selectedProject.contributors.length }}</p>
+        <p class="card-text"><strong>Dernière mise à jour : </strong> {{ selectedProject.lastUpdate }}</p>
+        <p class="card-text"><strong>Languages : </strong></p>
+        <div class="d-flex flex-wrap">
+          <div *ngFor="let language of selectedProject.languages" class="badge bg-primary me-1 mb-1">{{ language }}</div>
+        </div>
+        <p class="card-text"><strong>Description : </strong> {{ selectedProject.description }}</p>
+        <p class="card-text"><strong>GitHub URL : </strong> <a href="{{ selectedProject.githubUrl }}" target="_blank" class="text-light">Cliquer ici</a></p> <!-- Ajoutez la classe "text-light" pour le texte clair -->
+        <p class="card-text"><strong>Nombre d'étoiles : </strong> {{selectedProject.etoiles}}</p>
+      </div>
+      <button *ngIf="estCreateurProjet()" class="btn btn-primary" (click)="modifierProjet()">Modifier le projet</button>
+      <button *ngIf="estCreateurProjet()" class="btn btn-primary" (click)="supprimerProjet()">Supprimer le projet</button>
+    </div>
+  </div>

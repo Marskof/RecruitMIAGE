@@ -47,4 +47,35 @@ export class DetailsProjetsComponent implements OnInit {
   // Fonction pour participer au projet
   participerProjet(): void {
   }
+
+  modifierProjet(): void {
+    // Redirige l'utilisateur vers la page de modification du projet avec l'ID du projet
+    if (this.selectedProject) {
+      this.router.navigate(['/modifier-projet', this.selectedProject._id]);
+    }
+  }
+  
+
+  estCreateurProjet(): boolean {
+    // Le !! verifie si la valeur est 
+    //return !!this.selectedProject && this.selectedProject.creator === "Nom de l'utilisateur connecté";
+
+    return !!this.selectedProject;
+  }
+  
+
+  supprimerProjet(): void {
+    if (this.selectedProject && this.estCreateurProjet()) {
+        this.projectService.deleteProject(this.selectedProject._id).subscribe(() => {
+            // Rediriger l'utilisateur vers la page de liste des projets après la suppression du projet
+            this.router.navigate(['/liste-projet']);
+        }, error => {
+            console.error('Erreur lors de la suppression du projet :', error);
+        });
+    } else {
+        console.error('Vous n\'êtes pas autorisé à supprimer ce projet.');
+    }
+}
+
+  
 }

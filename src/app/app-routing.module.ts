@@ -6,6 +6,7 @@ import { InscriptionComponent } from './authentification/inscription/inscription
 import { FormulaireConnexionComponent } from './authentification/connexion/formulaire-connexion/formulaire-connexion.component';
 import { AppComponent } from './app.component';
 import { CreationProjetComponent } from './Projets/creation-projet/creation-projet.component';
+import { ModifierProjetComponent } from './Projets/modifier-projet/modifier-projet.component';
 
 
 //faire gaffe au auth guard
@@ -15,7 +16,9 @@ const routes: Routes = [
   {path: 'liste-projet', component: ListeProjetComponent},
   {path: 'details/:id', component: DetailsProjetsComponent},
   {path: 'inscription', component: InscriptionComponent},
-  {path: 'creation-projet', component: CreationProjetComponent}
+  {path: 'creation-projet', component: CreationProjetComponent},
+  {path: 'modifier-projet/:id', component: ModifierProjetComponent}
+
 ];
 
 @NgModule({
