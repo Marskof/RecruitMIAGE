@@ -36,7 +36,7 @@ export class AuthService {
   // A tester
   // Vérifier si un utilisateur appartient à un projet
   AppartientProjet(userId: string, projectId: string): Observable<boolean> {
-    const url = `${this.apiUrl}/${userId}/projects/${projectId}/check`;
+    const url = `${this.apiUrl}/${userId}/projets/${projectId}/check`;
     return this.http.get<boolean>(url);
   }
 }
