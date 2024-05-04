@@ -105,3 +105,24 @@ exports.checkAppartientProjet = (req, res, next) => {
             res.status(500).json({ error });
         });
 };
+
+
+// Vérifier si un utilisateur existe
+exports.checkUserExist = (req, res, next) => {
+    const { username, email } = req.body;
+
+    if (!username && !email) {
+        return res.status(400).json({ error: 'Nom utilisateur ou email non fourni' });
+    }
+
+    const searchCriteria = username ? { username } : { email };
+
+    Authentification.findOne(searchCriteria)
+        .then(user => {
+            if (!user) {
+                return res.status(404).json({ message: 'Utilisateur non trouvé' });
+            }
+            res.status(200).json({ message: 'Utilisateur trouvé', user });
+        })
+        .catch(error => res.status(500).json({ error }));
+};
