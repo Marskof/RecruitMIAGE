@@ -77,5 +77,7 @@ export class DetailsProjetsComponent implements OnInit {
     }
 }
 
+
+//rajouter bouton participer au projet
   
 }
