@@ -43,6 +43,7 @@ app.get('/api/authentification', authentificationController.getAllUsers);
 app.get('/api/authentification/:id', authentificationController.getUserById);
 app.put('/api/authentification/:id', authentificationController.updateUser);
 app.delete('/api/authentification/:id', authentificationController.deleteUser);
+app.get('/api/authentification/:userId/projets/:projetId/check', authentificationController.checkAppartientProjet);
 
 
 

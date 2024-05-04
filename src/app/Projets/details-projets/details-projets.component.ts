@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
 import { Router } from '@angular/router';
 import { Project } from '../../models/projets';
+import { utilisateur } from '../../models/authentification';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-details-projets',
@@ -12,14 +14,22 @@ import { Project } from '../../models/projets';
 export class DetailsProjetsComponent implements OnInit {
   selectedProject: Project | undefined;
   estLike: boolean = false;
+  userParticipeProjet: boolean = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private projectService: ProjectService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private projectService: ProjectService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const projectId = params['id'];
+      const userId = "id de l'utilisateur connecté"; // A remplacer par l'ID de l'utilisateur connecté
       this.projectService.getProjectById(projectId).subscribe(project => {
         this.selectedProject = project;
+        if (this.selectedProject) {
+          // Vérifie si l'utilisateur appartient déjà au projet
+          this.authService.AppartientProjet(userId, projectId).subscribe(result => {
+            this.userParticipeProjet = result;
+          });
+        }
       });
     });
   }
@@ -46,8 +56,9 @@ export class DetailsProjetsComponent implements OnInit {
   
   // Fonction pour participer au projet
   participerProjet(): void {
+    // Affiche un message indiquant que l'utilisateur est inscrit au projet
+    console.log("Vous êtes inscrit au projet !");
   }
-
   modifierProjet(): void {
     // Redirige l'utilisateur vers la page de modification du projet avec l'ID du projet
     if (this.selectedProject) {

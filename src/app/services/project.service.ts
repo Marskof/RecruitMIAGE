@@ -57,5 +57,13 @@ export class ProjectService {
     return this.http.patch(url, {});
   }
 
+  //Vérifier si un utilisateur a déjà ajouté une etoile à un projet
 
+  //Vérifier si un utilisateur participe déjà à un projet
+  checkParticipation(projectId: string): Observable<boolean> {
+  const url = `${this.apiUrl}/${projectId}/check-user`;
+  return this.http.get<boolean>(url);
+  }
+
+  
 }

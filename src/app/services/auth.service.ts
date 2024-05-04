@@ -31,4 +31,12 @@ export class AuthService {
   deleteUser(id: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
+
+
+  // A tester
+  // Vérifier si un utilisateur appartient à un projet
+  AppartientProjet(userId: string, projectId: string): Observable<boolean> {
+    const url = `${this.apiUrl}/${userId}/projects/${projectId}/check`;
+    return this.http.get<boolean>(url);
+  }
 }

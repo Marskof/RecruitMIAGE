@@ -1,4 +1,6 @@
 const Authentification = require('../models/authentification');
+const Project = require('../models/projets'); 
+
 
 // Créer un utilisateur
 exports.createUser = (req, res, next) => {
@@ -64,3 +66,42 @@ exports.deleteUser = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
 
+// Verifier si un utilisateur appartient à un projet
+exports.checkAppartientProjet = (req, res, next) => {
+    const userId = req.params.userId; 
+    const projectId = req.params.projetId;
+
+    // findById() est une méthode de mongoose
+    Authentification.findById(userId)
+        .then(user => {
+            if (!user) {
+                return res.status(404).json({ message: 'Utilisateur non trouvé' });
+            }
+
+            const username = user.username;
+
+            Project.findById(projectId)
+                .then(project => {
+                    if (!project) {
+                        return res.status(404).json({ message: 'Projet non trouvé' });
+                    }
+
+                    const userIsContributor = project.contributors.includes(username);
+
+                    if (!userIsContributor) {
+                        return res.status(404).json({ message: 'L\'utilisateur ne fait pas partie du projet' });
+                    }
+
+                    res.status(200).json({ userIsContributor: true });
+                })
+                .catch(error => {
+                    if (error.name === 'CastError') {
+                        return res.status(400).json({ message: 'ID de projet invalide' });
+                    }
+                    res.status(500).json({ error });
+                });
+        })
+        .catch(error => {
+            res.status(500).json({ error });
+        });
+};
