@@ -13,6 +13,10 @@ export class InscriptionComponent {
 
   constructor(private router: Router, private authService: AuthService) { }
 
+  navigateToProjects() {
+    this.router.navigate(['/liste-projet']);
+  }
+
   utilisateur: utilisateur = {
     nom: '',
     prenom: '',
