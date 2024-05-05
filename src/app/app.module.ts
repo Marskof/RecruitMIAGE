@@ -13,6 +13,9 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ModifierProjetComponent } from './Projets/modifier-projet/modifier-projet.component';
 
+import { CommonModule } from '@angular/common';
+import { FormulaireConnexionComponent } from './../app/authentification/connexion/formulaire-connexion/formulaire-connexion.component'; // Assurez-vous d'importer le composant
+
 
 @NgModule({
   declarations: [
@@ -22,15 +25,20 @@ import { ModifierProjetComponent } from './Projets/modifier-projet/modifier-proj
     InscriptionComponent,
     CreationProjetComponent,
     NavBarComponent,
-    ModifierProjetComponent
+    ModifierProjetComponent,
+    FormulaireConnexionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
 
+  ],
+  exports: [
+    FormulaireConnexionComponent // Si nécessaire, exportez le composant
   ],
   providers: [
     provideClientHydration()
@@ -38,3 +46,4 @@ import { ModifierProjetComponent } from './Projets/modifier-projet/modifier-proj
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export class FormulaireConnexionModule { }

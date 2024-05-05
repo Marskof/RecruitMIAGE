@@ -39,4 +39,8 @@ export class AuthService {
     const url = `${this.apiUrl}/${userId}/projets/${projectId}/check`;
     return this.http.get<boolean>(url);
   }
+  checkUserExist(username: string, password: string): Observable<any> {
+    const url = `${this.apiUrl}/checkUser`;
+    return this.http.post<any>(url, { username, password });
+  }
 }
