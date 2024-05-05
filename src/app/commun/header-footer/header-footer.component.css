@@ -1,0 +1,10 @@
+header {
+    text-align: center;
+  }
+
+footer{
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}

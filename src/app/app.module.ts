@@ -14,7 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { ModifierProjetComponent } from './Projets/modifier-projet/modifier-projet.component';
 
 import { CommonModule } from '@angular/common';
-import { FormulaireConnexionComponent } from './../app/authentification/connexion/formulaire-connexion/formulaire-connexion.component'; // Assurez-vous d'importer le composant
+import { FormulaireConnexionComponent } from './../app/authentification/connexion/formulaire-connexion/formulaire-connexion.component';
+import { HeaderFooterComponent } from './commun/header-footer/header-footer.component'; // Assurez-vous d'importer le composant
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FormulaireConnexionComponent } from './../app/authentification/connexio
     CreationProjetComponent,
     NavBarComponent,
     ModifierProjetComponent,
-    FormulaireConnexionComponent
+    FormulaireConnexionComponent,
+    HeaderFooterComponent
   ],
   imports: [
     BrowserModule,
