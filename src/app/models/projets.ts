@@ -10,5 +10,7 @@ export interface Project {
   githubUrl: string;
   image: string;
   etoiles: number;
+  nombrePlaces: number;
+  difficulte: string;
 
 }

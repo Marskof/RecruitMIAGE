@@ -17,6 +17,8 @@
         <p class="card-text"><strong>Description : </strong> {{ selectedProject.description }}</p>
         <p class="card-text"><strong>GitHub URL : </strong> <a href="{{ selectedProject.githubUrl }}" target="_blank" class="text-light">Cliquer ici</a></p> <!-- Ajoutez la classe "text-light" pour le texte clair -->
         <p class="card-text"><strong>Nombre d'étoiles : </strong> {{selectedProject.etoiles}}</p>
+        <p class="card-text"><strong>Nombre de places : </strong> {{ selectedProject.nombrePlaces }}</p>
+        <p class="card-text"><strong>Difficulté : </strong> {{ selectedProject.difficulte }}</p>
       </div>
       <button *ngIf="!userParticipeProjet" class="btn btn-primary" (click)="participerProjet()">Participer au projet</button>
       <button *ngIf="estCreateurProjet()" class="btn btn-primary" (click)="modifierProjet()">Modifier le projet</button>

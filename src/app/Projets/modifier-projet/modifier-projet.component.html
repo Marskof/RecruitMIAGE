@@ -1,20 +1,50 @@
-<form (ngSubmit)="modifierProjet()" class="form-container">
-    <div class="mb-3">
-        <label for="NomProjet" class="form-label">Nom du projet</label>
-        <textarea class="form-control" id="NomProjet" name="nom" rows="1" placeholder="Nom du projet :" [(ngModel)]="nomProjet"></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="Desc" class="form-label">Description du projet</label>
-        <textarea class="form-control" id="Desc" name="description" rows="3" placeholder="Description du projet :" [(ngModel)]="descriptionProjet"></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="Languages" class="form-label">Langages du projet</label>
-        <input type="text" class="form-control" id="Languages" name="languages" placeholder="Langages du projet :" [(ngModel)]="languages">
-    </div>
-    <div class="mb-3">
-        <label for="GitHubUrl" class="form-label">URL GitHub du projet</label>
-        <input type="text" class="form-control" id="GitHubUrl" name="githubUrl" placeholder="URL GitHub du projet :" [(ngModel)]="githubUrl">
-    </div>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">Modifier le projet</div>
+                <div class="card-body">
+                    <form (ngSubmit)="modifierProjet()">
+                        <div class="mb-3">
+                            <label for="NomProjet" class="form-label">Nom du projet</label>
+                            <input type="text" class="form-control" id="NomProjet" name="nom" placeholder="Nom du projet :" [(ngModel)]="nomProjet">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Desc" class="form-label">Description du projet</label>
+                            <textarea class="form-control" id="Desc" name="description" rows="3" placeholder="Description du projet :" [(ngModel)]="descriptionProjet"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Languages" class="form-label">Langages du projet</label>
+                            <input type="text" class="form-control" id="Languages" name="languages" placeholder="Langages du projet :" [(ngModel)]="languages">
+                        </div>
+                        <div class="mb-3">
+                            <label for="GitHubUrl" class="form-label">URL GitHub du projet</label>
+                            <input type="text" class="form-control" id="GitHubUrl" name="githubUrl" placeholder="URL GitHub du projet :" [(ngModel)]="githubUrl">
+                        </div>
 
-    <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
-</form>
+                        <div class="mb-3">
+                            <label for="NombrePlaces" class="form-label">Nombre de places</label>
+                            <input type="number" class="form-control" id="NombrePlaces" name="nombrePlaces" placeholder="Nombre de places :" [(ngModel)]="nombrePlaces">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Difficulte" class="form-label">Difficulté</label>
+                            <select class="form-select" id="Difficulte" name="difficulte" [(ngModel)]="difficulte">
+                                <option value="" disabled selected>Choisissez la difficulté</option>
+                                <option value="L1">L1</option>
+                                <option value="L2">L2</option>
+                                <option value="L3">L3</option>
+                                <option value="M1">M1</option>
+                                <option value="M2">M2</option>
+
+                            </select>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
