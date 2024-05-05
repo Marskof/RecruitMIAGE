@@ -10,9 +10,7 @@ import { AuthService } from '../../../services/auth.service';
 export class FormulaireConnexionComponent implements OnInit {
   username: string = ''; 
   password: string = '';
-  noconnexion = false;
   errorMessage: string = '';
-
 
   constructor(private connexionService: AuthService, private router: Router) {}
 
@@ -22,7 +20,7 @@ export class FormulaireConnexionComponent implements OnInit {
 
   login() {
     // Réinitialiser le drapeau d'erreur de connexion
-    this.noconnexion = false;
+    this.errorMessage = '';
 
     // Vérifier si les champs username et password sont remplis
     if (!this.username || !this.password) {
@@ -30,29 +28,42 @@ export class FormulaireConnexionComponent implements OnInit {
       return;
     }
 
-    this.connexionService.checkUserExist(this.username, this.password).subscribe(
-      (response: any) => {
-        // Vérifier le code de réponse
-        if (response && response.message === 'Utilisateur trouvé') {
-          // Rediriger vers la page liste-projet
-          this.router.navigate(['/liste-projet']);
-        } 
-      },
-      (error) => {
-        // En cas d'erreur, afficher un message d'erreur
-        console.error("Erreur lors de la tentative de connexion:", error);
-        if (error.status === 404) {
+    console.log("Informations d'identification:", this.username, this.password); // Ajout du log pour vérifier les informations d'identification
+
+    // Appeler le service d'authentification pour vérifier les informations de connexion
+    this.connexionService.checkInfosUser(this.username, this.password)
+      .subscribe(
+        (response: any) => {
+          // Vérifier si l'utilisateur et le mot de passe correspondent
+          if (response && response.message === 'Connexion réussie') {
+            // Rediriger vers la page liste-projet
+            this.router.navigate(['/liste-projet']);
+          } else {
+            // Afficher un message d'erreur en cas d'échec de la connexion
+            console.error("Connexion échouée:", response);
             this.errorMessage = 'Mot de passe ou utilisateur incorrect';
-        } else {
-            this.noconnexion = true;
+          }
+        },
+        (error) => {
+          // En cas d'erreur, afficher un message d'erreur
+          console.error("Erreur lors de la tentative de connexion:", error);
+          if (error.status === 404) {
+            this.errorMessage = 'Nom d\'utilisateur ou email incorrect';
+          } 
+          if(error.status === 401) {
+            this.errorMessage = 'Mot de passe incorrect';
+          }
+          else {
+            this.errorMessage = 'Nom d\'utilisateur ou email incorrect';
+          }
         }
-    }
-    );
+      );
   }
 
   onSubmit() {
     // Logique de gestion de la soumission du formulaire
     console.log('Formulaire soumis');
+    this.login(); // Appeler la méthode de connexion lors de la soumission du formulaire
   }
 
   navigateToInscription() {

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient,HttpErrorResponse } from '@angular/common/http';
+import { Observable,throwError } from 'rxjs';
 import { utilisateur } from '../models/authentification';
+import { catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -43,4 +44,13 @@ export class AuthService {
     const url = `${this.apiUrl}/checkUser`;
     return this.http.post<any>(url, { username, password });
   }
+
+  checkInfosUser(usernameOrEmail: string, password: string): Observable<any> {
+    const url = `${this.apiUrl}/checkInfosUser`;
+    return this.http.post<any>(url, { usernameOrEmail, password })
+
+  }
+
+
+
 }

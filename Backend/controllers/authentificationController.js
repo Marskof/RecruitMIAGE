@@ -126,3 +126,41 @@ exports.checkUserExist = (req, res, next) => {
         })
         .catch(error => res.status(500).json({ error }));
 };
+
+
+
+// Vérifier si un utilisateur existe et vérifier les informations de connexion
+exports.checkInfosUser = (req, res, next) => {
+    const { usernameOrEmail, password } = req.body;
+
+    if (!usernameOrEmail || !password) {
+        return res.status(400).json({ error: 'Nom utilisateur ou email et mot de passe non fournis' });
+    }
+
+    // Vérifier si l'entrée est une adresse e-mail
+    const isEmail = usernameOrEmail.includes('@');
+
+    let searchCriteria = {};
+
+    if (isEmail) {
+        searchCriteria = { email: usernameOrEmail };
+    } else {
+        searchCriteria = { username: usernameOrEmail };
+    }
+
+    Authentification.findOne(searchCriteria)
+        .then(user => {
+            if (!user) {
+                return res.status(404).json({ message: 'Utilisateur non trouvé' });
+            }
+
+            // Vérification du mot de passe
+            if (user.password !== password) {
+                return res.status(401).json({ message: 'Mot de passe incorrect' });
+            }
+
+            res.status(200).json({ message: 'Connexion réussie', user });
+        })
+        .catch(error => res.status(500).json({ error }));
+};
+
