@@ -23,3 +23,8 @@ body {
     text-align: center;
     color: blue;
   }
+
+  .error-message {
+    color: red;
+    font-size: 14px;
+}

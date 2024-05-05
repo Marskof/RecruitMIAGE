@@ -17,6 +17,8 @@
           <div class="mb-3">
             <input type="password" class="form-control" [(ngModel)]="password" id="password" name="password" placeholder="Mot de passe">
           </div>
+          <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
           <div id="mdp">
             <a class="mdp" href="#">Mot de passe oublié ?</a>
           </div>

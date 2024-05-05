@@ -11,6 +11,8 @@ export class FormulaireConnexionComponent implements OnInit {
   username: string = ''; 
   password: string = '';
   noconnexion = false;
+  errorMessage: string = '';
+
 
   constructor(private connexionService: AuthService, private router: Router) {}
 
@@ -34,16 +36,17 @@ export class FormulaireConnexionComponent implements OnInit {
         if (response && response.message === 'Utilisateur trouvé') {
           // Rediriger vers la page liste-projet
           this.router.navigate(['/liste-projet']);
-        } else {
-          // Sinon, rediriger vers la page d'inscription
-          this.router.navigate(['/inscription']);
-        }
+        } 
       },
       (error) => {
         // En cas d'erreur, afficher un message d'erreur
         console.error("Erreur lors de la tentative de connexion:", error);
-        this.noconnexion = true;
-      }
+        if (error.status === 404) {
+            this.errorMessage = 'Mot de passe ou utilisateur incorrect';
+        } else {
+            this.noconnexion = true;
+        }
+    }
     );
   }
 
