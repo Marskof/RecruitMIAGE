@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const projectSchema = new mongoose.Schema({
+const projectSchema = new mongoose.Schema({ // Création du schéma de données, comme une table en SQL
   name: String,
   creator: String,
   creationDate: String,

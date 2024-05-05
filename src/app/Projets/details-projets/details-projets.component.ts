@@ -25,7 +25,6 @@ export class DetailsProjetsComponent implements OnInit {
       this.projectService.getProjectById(projectId).subscribe(project => {
         this.selectedProject = project;
         if (this.selectedProject) {
-          // Vérifie si l'utilisateur appartient déjà au projet
           this.authService.AppartientProjet(userId, projectId).subscribe(result => {
             this.userParticipeProjet = result;
           });
@@ -56,7 +55,7 @@ export class DetailsProjetsComponent implements OnInit {
   
   // Fonction pour participer au projet
   participerProjet(): void {
-    // Affiche un message indiquant que l'utilisateur est inscrit au projet
+    //je dois verifier qu'il existe ou pas au projet
     console.log("Vous êtes inscrit au projet !");
   }
   modifierProjet(): void {
@@ -78,7 +77,6 @@ export class DetailsProjetsComponent implements OnInit {
   supprimerProjet(): void {
     if (this.selectedProject && this.estCreateurProjet()) {
         this.projectService.deleteProject(this.selectedProject._id).subscribe(() => {
-            // Rediriger l'utilisateur vers la page de liste des projets après la suppression du projet
             this.router.navigate(['/liste-projet']);
         }, error => {
             console.error('Erreur lors de la suppression du projet :', error);
@@ -89,6 +87,5 @@ export class DetailsProjetsComponent implements OnInit {
 }
 
 
-//rajouter bouton participer au projet
   
 }

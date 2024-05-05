@@ -25,7 +25,6 @@ export class ModifierProjetComponent implements OnInit {
     difficulte: ''
   };
 
-  // Déclarez les propriétés correspondant aux champs du formulaire
   nomProjet: string = '';
   descriptionProjet: string = '';
   githubUrl: string = '';
@@ -40,11 +39,10 @@ export class ModifierProjetComponent implements OnInit {
       const projectId = params['id'];
       this.projectService.getProjectById(projectId).subscribe(project => {
         this.projetModifie = project;
-        // Mettez à jour les propriétés avec les valeurs du projet
         this.nomProjet = project.name;
         this.descriptionProjet = project.description;
         this.githubUrl = project.githubUrl;
-        this.languages = project.languages.join(', '); // Convertit le tableau de langages en chaîne séparée par des virgules
+        this.languages = project.languages.join(', '); // Convertit le tableau en chaîne séparée par des virgules, donc on doit mettre des virgules après chaque langage
         this.nombrePlaces = project.nombrePlaces; 
         this.difficulte = project.difficulte;
       });
@@ -52,17 +50,14 @@ export class ModifierProjetComponent implements OnInit {
   }
 
   modifierProjet(): void {
-    // Mettez à jour les propriétés du projet modifié avec les valeurs des champs de formulaire
     this.projetModifie.name = this.nomProjet;
     this.projetModifie.description = this.descriptionProjet;
     this.projetModifie.githubUrl = this.githubUrl;
-    this.projetModifie.languages = this.languages.split(',').map(lang => lang.trim()); // Convertit la chaîne de langages en tableau en supprimant les espaces autour de chaque langage
+    this.projetModifie.languages = this.languages.split(',').map(lang => lang.trim()); // Convertit la chaîne en tableau en supprimant les espaces autour de chaque langage
     this.projetModifie.nombrePlaces = this.nombrePlaces; 
     this.projetModifie.difficulte = this.difficulte;
     
-    // Appelez la méthode de service pour mettre à jour le projet dans le backend
     this.projectService.updateProject(this.projetModifie).subscribe(() => {
-      // Rediriger l'utilisateur vers la page de détails du projet
       this.router.navigate(['/details', this.projetModifie._id]);
     }, error => {
       console.error('Erreur lors de la modification du projet :', error);

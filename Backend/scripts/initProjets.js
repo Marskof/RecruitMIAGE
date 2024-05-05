@@ -55,25 +55,21 @@ const projectsData = [
     difficulte : 'L1',
     etoiles: 216
   }
-  // Ajoutez autant d'objets de projet que vous le souhaitez
 ];
 
 // Fonction pour insérer les données dans la base de données
 const populateDatabase = async () => {
   try {
-    // Supprimer tous les projets existants pour éviter les doublons
-    await Project.deleteMany({});
+    await Project.deleteMany({}); // Supprime tous les projets qui existe deja
 
-    // Insérer les nouveaux projets
     const insertedProjects = await Project.insertMany(projectsData);
     console.log(`${insertedProjects.length} projets insérés avec succès dans la base de données.`);
   } catch (error) {
     console.error('Erreur lors du peuplement de la base de données :', error);
   } finally {
-    // Déconnexion de la base de données
     mongoose.disconnect();
   }
 };
 
-// Appel de la fonction pour peupler la base de données
+// Appel de la fonction 
 populateDatabase();

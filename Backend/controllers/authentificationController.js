@@ -4,19 +4,16 @@ const Project = require('../models/projets');
 
 // Créer un utilisateur
 exports.createUser = (req, res, next) => {
-    // Vérifie si req.body est défini et contient les données attendues
     if (!req.body || Object.keys(req.body).length === 0) {
         return res.status(400).json({ error: 'Aucune donnée envoyée dans le corps de la requête' });
     }
 
     const { nom, prenom, username, email, password, cgu } = req.body;
 
-    // Vérifie si toutes les données requises sont présentes
     if (!nom || !prenom || !username || !email || !password || !cgu) {
         return res.status(400).json({ error: 'Toutes les données requises ne sont pas fournies' });
     }
 
-    // Crée un nouvel utilisateur avec les données fournies
     const user = new Authentification({
         nom,
         prenom,
@@ -26,8 +23,7 @@ exports.createUser = (req, res, next) => {
         cgu
     });
 
-    // Sauvegarde l'utilisateur dans la base de données
-    user.save()
+    user.save() // user.save permet de sauvegarder grace a mongoose
         .then(() => res.status(201).json({ message: 'Utilisateur enregistré !' }))
         .catch(error => res.status(400).json({ error }));
 };
@@ -86,13 +82,13 @@ exports.checkAppartientProjet = (req, res, next) => {
                         return res.status(404).json({ message: 'Projet non trouvé' });
                     }
 
-                    const userIsContributor = project.contributors.includes(username);
+                    const UserContributeur = project.contributors.includes(username);
 
-                    if (!userIsContributor) {
+                    if (!UserContributeur) {
                         return res.status(404).json({ message: 'L\'utilisateur ne fait pas partie du projet' });
                     }
 
-                    res.status(200).json({ userIsContributor: true });
+                    res.status(200).json({ UserContributeur: true });
                 })
                 .catch(error => {
                     if (error.name === 'CastError') {
@@ -115,9 +111,9 @@ exports.checkUserExist = (req, res, next) => {
         return res.status(400).json({ error: 'Nom utilisateur ou email non fourni' });
     }
 
-    const searchCriteria = username ? { username } : { email };
+    const criteres = username ? { username } : { email }; // ternaire qui permet de vérifier si username existe, si oui on le met dans criteres, sinon on met email
 
-    Authentification.findOne(searchCriteria)
+    Authentification.findOne(criteres) // findOne() est une méthode de mongoose
         .then(user => {
             if (!user) {
                 return res.status(404).json({ message: 'Utilisateur non trouvé' });
@@ -140,15 +136,15 @@ exports.checkInfosUser = (req, res, next) => {
     // Vérifier si l'entrée est une adresse e-mail
     const isEmail = usernameOrEmail.includes('@');
 
-    let searchCriteria = {};
+    let criteres = {};
 
     if (isEmail) {
-        searchCriteria = { email: usernameOrEmail };
+        criteres = { email: usernameOrEmail };
     } else {
-        searchCriteria = { username: usernameOrEmail };
+        criteres = { username: usernameOrEmail };
     }
 
-    Authentification.findOne(searchCriteria)
+    Authentification.findOne(criteres)
         .then(user => {
             if (!user) {
                 return res.status(404).json({ message: 'Utilisateur non trouvé' });

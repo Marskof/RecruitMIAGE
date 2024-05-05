@@ -9,7 +9,7 @@ import { catchError } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:3000/api/authentification'; // Mettez à jour l'URL ici
+  private apiUrl = 'http://localhost:3000/api/authentification'; 
 
   constructor(private http: HttpClient) { }
 
@@ -35,7 +35,6 @@ export class AuthService {
 
 
   // A tester
-  // Vérifier si un utilisateur appartient à un projet
   AppartientProjet(userId: string, projectId: string): Observable<boolean> {
     const url = `${this.apiUrl}/${userId}/projets/${projectId}/check`;
     return this.http.get<boolean>(url);
