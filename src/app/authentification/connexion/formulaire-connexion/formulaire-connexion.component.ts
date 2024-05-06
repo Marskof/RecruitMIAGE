@@ -86,4 +86,9 @@ export class FormulaireConnexionComponent implements OnInit {
   navigateToProjects() {
     this.router.navigate(['/liste-projet']);
   }
+
+  logout(): void {
+    this.connexionService.logout();
+    //rajouter redirection
+  }
 }

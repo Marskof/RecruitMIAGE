@@ -63,5 +63,9 @@ export class AuthService {
     localStorage.removeItem(this.currentUserKey);
   }
 
+  logout(): void {
+    localStorage.removeItem(this.currentUserKey);
+  }
+
 
 }
