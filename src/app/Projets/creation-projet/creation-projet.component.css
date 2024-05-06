@@ -26,3 +26,10 @@ body {
   .form-group{
     color: grey;
   }
+
+.btn-close {
+  width: 40px; /* Définir une largeur */
+  height: 40px; /* Définir une hauteur */
+  padding: 10px; /* Ajouter de l'espace autour du texte du lien */
+  font-size: 20px; /* Définir la taille de la police */
+}

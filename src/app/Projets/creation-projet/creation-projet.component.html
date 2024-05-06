@@ -1,8 +1,13 @@
-<div class="container">
+<div class="container" xmlns:href="http://www.w3.org/1999/xhtml">
   <div class="row justify-content-center mt-5">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header bg-primary text-white">Créer un projet</div>
+        <div data-bs-theme="dark">
+          <!-- Utilisation d'un lien <a> à la place d'un bouton <button> -->
+          <a class="btn-close" aria-label="Close" href="/liste-projet"></a>
+        </div>
+
+        <div class="card-header text-white text-center">Créer un projet</div>
         <div class="card-body">
           <form (ngSubmit)="onSubmit()">
             <div class="mb-1">
@@ -77,20 +82,15 @@
                 <option value="M2">M2</option>
               </select>
             </div>
-
-            <button type="submit" class="btn btn-primary float-end">Créer le projet</button>
-
-
+            <button type="submit" class="btn btn-primary float-end" href="/liste-projet">Créer le projet</button>
           </form>
-
-
-
-
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
 
 
 

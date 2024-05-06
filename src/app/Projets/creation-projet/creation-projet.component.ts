@@ -22,6 +22,7 @@ export class CreationProjetComponent {
   constructor(private router: Router, private projectService: ProjectService) { }
 
   // Fonction appelée lors de la soumission du formulaire
+
   onSubmit() {
     // Création d'un objet contenant les données du projet
     const newProject = {
@@ -33,25 +34,19 @@ export class CreationProjetComponent {
       githubUrl:this.githubUrl,
       etoiles :this.etoiles,
       creationDate:this.creationDate,
-      image:this.image
-    };
+      image:this.image,
 
-    // Appel du service pour enregistrer le nouveau projet
+    };
     // @ts-ignore
     this.projectService.addProject(newProject).subscribe(
       (response) => {
-        // Gérer la réponse du serveur si nécessaire
-        console.log('Projet enregistré avec succès:', response);
-        // Redirection vers une autre page par exemple
-        this.router.navigate(['/autre-page']);
+        this.router.navigate(['/liste-projet']);
       },
       (error) => {
-        // Gérer les erreurs éventuelles
         console.error('Erreur lors de l\'enregistrement du projet:', error);
       }
     );
   }
-
   updateLanguages(event: any) {
     const checked = event.target.checked;
     const value = event.target.value;
