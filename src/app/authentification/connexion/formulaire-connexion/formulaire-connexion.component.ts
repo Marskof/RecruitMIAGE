@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
@@ -11,31 +12,42 @@ export class FormulaireConnexionComponent implements OnInit {
   username: string = ''; 
   password: string = '';
   errorMessage: string = '';
+  currentUser : any;
 
   constructor(private connexionService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    this.currentUser = this.connexionService.getCurrentUserId();
+    console.log("utilisateur courant: " + this.currentUser);
     // Initialisation
   }
 
+  
   login() {
     // Réinitialiser le drapeau d'erreur de connexion
     this.errorMessage = '';
-
+  
     // Vérifier si les champs username et password sont remplis
     if (!this.username || !this.password) {
       console.error("Veuillez remplir tous les champs.");
       return;
     }
-
-    console.log("Informations d'identification:", this.username, this.password); // Ajout du log pour vérifier les informations d'identification
-
+  
+    console.log("Informations d'identification:", this.username, this.password);
+  
     // Appeler le service d'authentification pour vérifier les informations de connexion
     this.connexionService.checkInfosUser(this.username, this.password)
       .subscribe(
         (response: any) => {
-          // Vérifier si l'utilisateur et le mot de passe correspondent
-          if (response && response.message === 'Connexion réussie') {
+          console.log("Réponse du service d'authentification:", response);
+          if (response && response.user && response.user._id && response.message === 'Connexion réussie') {
+            // Assurez-vous que response.user._id est là où se trouve l'ID de l'utilisateur
+            const userId = response.user._id;
+            console.log("ID de l'utilisateur actuel:", userId);
+  
+            // Stocker l'ID de l'utilisateur dans le localStorage
+            this.connexionService.setCurrentUserId(userId);
+  
             // Rediriger vers la page liste-projet
             this.router.navigate(['/liste-projet']);
           } else {
@@ -49,16 +61,17 @@ export class FormulaireConnexionComponent implements OnInit {
           console.error("Erreur lors de la tentative de connexion:", error);
           if (error.status === 404) {
             this.errorMessage = 'Nom d\'utilisateur ou email incorrect';
-          } 
-          if(error.status === 401) {
+          } else if (error.status === 401) {
             this.errorMessage = 'Mot de passe incorrect';
-          }
-          else {
+          } else {
             this.errorMessage = 'Nom d\'utilisateur ou email incorrect';
           }
         }
       );
   }
+  
+  
+  
 
   onSubmit() {
     // Logique de gestion de la soumission du formulaire

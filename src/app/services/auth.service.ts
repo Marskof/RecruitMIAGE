@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Observable,throwError } from 'rxjs';
@@ -10,7 +11,7 @@ import { catchError } from 'rxjs';
 export class AuthService {
 
   private apiUrl = 'http://localhost:3000/api/authentification'; 
-
+  currentUserKey = 'currentUser';
   constructor(private http: HttpClient) { }
 
   createUser(user: utilisateur): Observable<utilisateur> {
@@ -50,6 +51,17 @@ export class AuthService {
 
   }
 
+  setCurrentUserId(userId: string): void {
+    localStorage.setItem(this.currentUserKey, userId);
+  }
+
+  getCurrentUserId(): string | null {
+    return localStorage.getItem(this.currentUserKey);
+  }
+
+  clearCurrentUserId(): void {
+    localStorage.removeItem(this.currentUserKey);
+  }
 
 
 }
