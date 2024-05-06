@@ -62,12 +62,12 @@ exports.deleteUser = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
 
-// Verifier si un utilisateur appartient à un projet
+// Verifier si un utilisateur appartient à un projet en regardant si le nom d'utilisateur est dans la liste des contributeurs ou bien si l'utilisateur est le créateur du projet
+
 exports.checkAppartientProjet = (req, res, next) => {
     const userId = req.params.userId; 
     const projectId = req.params.projetId;
 
-    // findById() est une méthode de mongoose
     Authentification.findById(userId)
         .then(user => {
             if (!user) {
@@ -82,13 +82,14 @@ exports.checkAppartientProjet = (req, res, next) => {
                         return res.status(404).json({ message: 'Projet non trouvé' });
                     }
 
-                    const UserContributeur = project.contributors.includes(username);
+                    const userIsCreator = project.creator === username;
+                    const userIsContributor = project.contributors.includes(username);
 
-                    if (!UserContributeur) {
-                        return res.status(404).json({ message: 'L\'utilisateur ne fait pas partie du projet' });
+                    if (!userIsCreator && !userIsContributor) {
+                        return res.status(404).json({ message: "L'utilisateur ne fait pas partie du projet" });
                     }
 
-                    res.status(200).json({ UserContributeur: true });
+                    res.status(200).json({ userIsContributor });
                 })
                 .catch(error => {
                     if (error.name === 'CastError') {

@@ -15,7 +15,7 @@ mongoose.connect('mongodb+srv://marouane:marouane@recruitmiage.itau9ul.mongodb.n
 const projectsData = [
   {
     name: 'Projet 1',
-    creator: 'Créateur 1',
+    creator: 'Marouane',
     creationDate: '2022-01-01',
     description: 'Description du projet 1',
     contributors: ['Membre 1', 'Membre 2', 'Membre 3'],
@@ -32,7 +32,7 @@ const projectsData = [
     creator: 'Créateur 2',
     creationDate: '2022-01-01',
     description: 'Description du projet 2',
-    contributors: ['Membre 4', 'Membre 5'],
+    contributors: ['Membre 4', 'Membre 5','Marouane'],
     lastUpdate: '2022-04-05',
     languages: ['JavaScript', 'TypeScript'],
     githubUrl: 'https://github.com/projet2',
