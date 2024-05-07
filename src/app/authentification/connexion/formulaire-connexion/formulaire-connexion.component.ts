@@ -33,7 +33,7 @@ export class FormulaireConnexionComponent implements OnInit {
       return;
     }
   
-    console.log("Informations d'identification:", this.username, this.password);
+    console.log("Informations d'identification:", this.username, this.password, this.currentUser);
   
     // Appeler le service d'authentification pour vérifier les informations de connexion
     this.connexionService.checkInfosUser(this.username, this.password)
@@ -43,10 +43,14 @@ export class FormulaireConnexionComponent implements OnInit {
           if (response && response.user && response.user._id && response.message === 'Connexion réussie') {
             // Assurez-vous que response.user._id est là où se trouve l'ID de l'utilisateur
             const userId = response.user._id;
+            const username = response.user.username;
             console.log("ID de l'utilisateur actuel:", userId);
+            console.log("Nom de l'utilisateur actuel:", username);
   
             // Stocker l'ID de l'utilisateur dans le localStorage
             this.connexionService.setCurrentUserId(userId);
+            this.connexionService.setCurrentUsername(username);
+
   
             // Rediriger vers la page liste-projet
             this.router.navigate(['/liste-projet']);

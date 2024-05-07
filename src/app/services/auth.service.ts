@@ -11,6 +11,7 @@ export class AuthService {
 
   private apiUrl = 'http://localhost:3000/api/authentification';
   private currentUserKey = 'currentUser';
+  private currentUsername = 'currentUsername';
 
   constructor(private http: HttpClient) { }
 
@@ -54,8 +55,17 @@ export class AuthService {
     this.setStorageItem(this.currentUserKey, userId);
   }
 
+
   getCurrentUserId(): string | null {
     return this.getStorageItem(this.currentUserKey);
+  }
+
+  getCurrentUsername(): string | null {
+    return this.getStorageItem('currentUsername');
+  }
+    
+  setCurrentUsername(username: string): void {
+    this.setStorageItem(this.currentUsername, username);
   }
 
   clearCurrentUserId(): void {

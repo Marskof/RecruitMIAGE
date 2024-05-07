@@ -68,8 +68,11 @@ export class DetailsProjetsComponent implements OnInit {
   }
 
   estCreateurProjet(): boolean {
-    return !!this.selectedProject; // Simplified for now
+    const currentUsername = this.authService.getCurrentUsername();
+    return !!currentUsername && !!this.selectedProject && currentUsername === this.selectedProject.creator;
   }
+  
+  
 
   supprimerProjet(): void {
     if (this.selectedProject && this.estCreateurProjet()) {
