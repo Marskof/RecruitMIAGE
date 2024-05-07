@@ -58,8 +58,32 @@ export class DetailsProjetsComponent implements OnInit {
   }
 
   participerProjet(): void {
-    // Implement logic to participate in the project
+    const currentUsername = this.authService.getCurrentUsername();
+    if (!currentUsername) {
+      console.error("L'utilisateur n'est pas connecté.");
+      return;
+    }
+  
+    if (!this.selectedProject) {
+      console.error("Aucun projet sélectionné.");
+      return;
+    }
+  
+    this.selectedProject.contributors.push(currentUsername);
+  
+    this.projectService.updateProject(this.selectedProject).subscribe(
+      () => {
+        console.log("L'utilisateur a été ajouté avec succès aux contributeurs du projet.");
+        this.userParticipeProjet = true;
+      },
+      error => {
+        console.error("Erreur lors de l'ajout de l'utilisateur aux contributeurs du projet :", error);
+
+      }
+    );
   }
+  
+  
 
   modifierProjet(): void {
     if (this.selectedProject) {
