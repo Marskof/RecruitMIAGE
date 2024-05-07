@@ -21,6 +21,7 @@
         <p class="card-text"><strong>Difficulté : </strong> {{ selectedProject.difficulte }}</p>
       </div>
       <button *ngIf="!userParticipeProjet" class="btn btn-primary" (click)="participerProjet()">Participer au projet</button>
+      <button *ngIf="userParticipeProjet" class="btn btn-danger" (click)="nePlusParticiperProjet()">Ne plus participer au projet</button>
       <button *ngIf="estCreateurProjet()" class="btn btn-primary" (click)="modifierProjet()">Modifier le projet</button>
       <button *ngIf="estCreateurProjet()" class="btn btn-primary" (click)="supprimerProjet()">Supprimer le projet</button>
       

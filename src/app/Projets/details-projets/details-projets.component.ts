@@ -83,7 +83,35 @@ export class DetailsProjetsComponent implements OnInit {
     );
   }
   
+  nePlusParticiperProjet(): void {
+    const currentUsername = this.authService.getCurrentUsername();
+    if (!currentUsername) {
+      console.error("L'utilisateur n'est pas connecté.");
+      return;
+    }
   
+    if (!this.selectedProject) {
+      console.error("Aucun projet sélectionné.");
+      return;
+    }
+  
+    const index = this.selectedProject.contributors.indexOf(currentUsername);
+    if (index !== -1) {
+      this.selectedProject.contributors.splice(index, 1);
+  
+      this.projectService.updateProject(this.selectedProject).subscribe(
+        () => {
+          console.log("L'utilisateur a été retiré avec succès des contributeurs du projet.");
+          this.userParticipeProjet = false;
+        },
+        error => {
+          console.error("Erreur lors de la suppression de l'utilisateur des contributeurs du projet :", error);
+        }
+      );
+    }
+  }
+
+
 
   modifierProjet(): void {
     if (this.selectedProject) {
