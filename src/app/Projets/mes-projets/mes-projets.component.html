@@ -1,0 +1,39 @@
+<app-nav-bar></app-nav-bar>
+<div class="border-opacity-100 p-3" style="--bs-border-opacity: 1;"></div>
+
+<div class="h4 pb-2 mb-4 text-white border-bottom border-white">
+  Les projets que j'ai créer
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let project of projects" (click)="showProjectDetails(project)">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">{{ project.name }}</h5>
+        </div>
+        <div class="card-body">
+          <img [src]="'http://localhost:3000/images/' + project.image" class="card-img-top" alt="Image du projet">
+          <p class="card-text">Nombre de contributeurs: {{ project.contributors.length }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="h4 pb-2 mb-4 text-white border-bottom border-white">
+  Les projets auquelle je participe
+</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-3" *ngFor="let project of projects" (click)="showProjectDetails(project)">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">{{ project.name }}</h5>
+          </div>
+          <div class="card-body">
+            <img [src]="'http://localhost:3000/images/' + project.image" class="card-img-top" alt="Image du projet">
+            <p class="card-text">Nombre de contributeurs: {{ project.contributors.length }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
