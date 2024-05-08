@@ -26,10 +26,10 @@
             <input type="checkbox" class="form-check-input" id="cgu" name="cgu" [(ngModel)]="utilisateur.cgu" required>
             <label class="form-check-label" for="cgu">J'accepte les conditions générales d'utilisation</label>
           </div>
-          
-          <form (submit)="createUser(); navigateToProjects()" #inscriptionForm="ngForm">
-            <button type="submit" class="btn btn-primary float-end" [disabled]="!inscriptionForm.valid">S'inscrire</button>
-          </form>
+          <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+          </div>
+          <button type="submit" class="btn btn-primary float-end" [disabled]="!inscriptionForm.valid">S'inscrire</button>
         </form>
 
       </div>

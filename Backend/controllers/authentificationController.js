@@ -3,6 +3,7 @@ const Project = require('../models/projets');
 
 
 // Créer un utilisateur
+// Créer un utilisateur
 exports.createUser = (req, res, next) => {
     if (!req.body || Object.keys(req.body).length === 0) {
         return res.status(400).json({ error: 'Aucune donnée envoyée dans le corps de la requête' });
@@ -14,19 +15,30 @@ exports.createUser = (req, res, next) => {
         return res.status(400).json({ error: 'Toutes les données requises ne sont pas fournies' });
     }
 
-    const user = new Authentification({
-        nom,
-        prenom,
-        username,
-        email,
-        password,
-        cgu
-    });
+    // Vérifier si l'username est déjà utilisé
+    Authentification.findOne({ username })
+        .then(existingUser => {
+            if (existingUser) {
+                return res.status(409).json({ error: 'Cet utilisateur existe déjà' });
+            }
 
-    user.save() // user.save permet de sauvegarder grace a mongoose
-        .then(() => res.status(201).json({ message: 'Utilisateur enregistré !' }))
-        .catch(error => res.status(400).json({ error }));
+            // Si l'username est unique, créer le nouvel utilisateur
+            const user = new Authentification({
+                nom,
+                prenom,
+                username,
+                email,
+                password,
+                cgu
+            });
+
+            user.save()
+                .then(() => res.status(201).json({ message: 'Utilisateur enregistré !' }))
+                .catch(error => res.status(400).json({ error }));
+        })
+        .catch(error => res.status(500).json({ error }));
 };
+
 
 
 // Lire tous les utilisateurs

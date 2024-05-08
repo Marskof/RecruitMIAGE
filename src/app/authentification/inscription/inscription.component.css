@@ -15,3 +15,7 @@ body {
   .form-check-input{
     color: blue;
   }
+
+  .error-message {
+    color: red;
+  }
