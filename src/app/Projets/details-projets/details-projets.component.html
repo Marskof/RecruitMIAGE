@@ -3,12 +3,20 @@
     <div *ngIf="selectedProject" class="card bg-dark text-light">
       <div class="card-header">
         <h2 class="card-title">{{ selectedProject.name }}</h2>
-        <button class="btn btn-link text-light" (click)="likeProject()">&#x2764;</button>
+        <button class="btn btn-outline-primary" (click)="likeProject()">
+          <span class="bi bi-heart"></span> Like
+        </button>  
+        
+        
       </div>
       <div class="card-body">
         <p class="card-text"><strong>Créateur : </strong> {{ selectedProject.creator }}</p>
         <p class="card-text"><strong>Date de création : </strong> {{ selectedProject.creationDate }}</p>
         <p class="card-text"><strong>Nombre de contributeurs : </strong> {{ selectedProject.contributors.length }}</p>
+        <p class="card-text"><strong>Contributeurs :</strong></p>
+        <ul>
+            <li *ngFor="let contributor of selectedProject.contributors">{{ contributor }}</li>
+        </ul>
         <p class="card-text"><strong>Dernière mise à jour : </strong> {{ selectedProject.lastUpdate }}</p>
         <p class="card-text"><strong>Languages : </strong></p>
         <div class="d-flex flex-wrap">
@@ -20,8 +28,9 @@
         <p class="card-text"><strong>Nombre de places : </strong> {{ selectedProject.nombrePlaces }}</p>
         <p class="card-text"><strong>Difficulté : </strong> {{ selectedProject.difficulte }}</p>
       </div>
-      <button *ngIf="!userParticipeProjet" class="btn btn-primary" (click)="participerProjet()">Participer au projet</button>
-      <button *ngIf="userParticipeProjet && !estCreateurProjet()" class="btn btn-primary" (click)="nePlusParticiperProjet()">Ne plus participer au projet</button>
+      <button *ngIf="!userParticipeProjet && selectedProject.contributors.length < selectedProject.nombrePlaces" class="btn btn-primary" (click)="participerProjet()">Participer au projet </button>
+      <button *ngIf="!userParticipeProjet && selectedProject.contributors.length >= selectedProject.nombrePlaces" class="btn btn-primary" disabled>Groupe plein</button>
+      <button *ngIf="userParticipeProjet && !estCreateurProjet()" class="btn btn-danger" (click)="nePlusParticiperProjet()">Ne plus participer au projet</button>
       <button *ngIf="estCreateurProjet()" class="btn btn-primary" (click)="modifierProjet()">Modifier le projet</button>
       <button *ngIf="estCreateurProjet()" class="btn btn-primary" (click)="supprimerProjet()">Supprimer le projet</button>
       

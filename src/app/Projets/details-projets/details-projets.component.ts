@@ -69,6 +69,11 @@ export class DetailsProjetsComponent implements OnInit {
       return;
     }
   
+    if (this.selectedProject.contributors.length >= this.selectedProject.nombrePlaces) {
+      console.error("Nombre maximum de contributeurs atteint pour ce projet.");
+      return;
+    }
+  
     this.selectedProject.contributors.push(currentUsername);
   
     this.projectService.updateProject(this.selectedProject).subscribe(
@@ -78,7 +83,6 @@ export class DetailsProjetsComponent implements OnInit {
       },
       error => {
         console.error("Erreur lors de l'ajout de l'utilisateur aux contributeurs du projet :", error);
-
       }
     );
   }
