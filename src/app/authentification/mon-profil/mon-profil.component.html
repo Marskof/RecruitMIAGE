@@ -1,14 +1,32 @@
-<div class="card">
-    <div class="card-header">
+<app-nav-bar></app-nav-bar>
+
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
       Informations de l'utilisateur
     </div>
     <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>Nom:</strong> {{ utilisateur.nom }}</li>
-        <li class="list-group-item"><strong>Prénom:</strong> {{ utilisateur.prenom }}</li>
-        <li class="list-group-item"><strong>Nom d'utilisateur:</strong> {{ utilisateur.username }}</li>
-        <li class="list-group-item"><strong>Email:</strong> {{ utilisateur.email }}</li>
-      </ul>
+      <form (ngSubmit)="updateUserInfo()">
+        <div class="mb-3">
+          <label for="nom" class="form-label">Nom :</label>
+          <input type="text" class="form-control" id="nom" [(ngModel)]="utilisateur.nom" name="nom">
+        </div>
+        <div class="mb-3">
+          <label for="prenom" class="form-label">Prénom :</label>
+          <input type="text" class="form-control" id="prenom" [(ngModel)]="utilisateur.prenom" name="prenom">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email :</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="utilisateur.email" name="email">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Nouveau mot de passe :</label>
+          <input type="password" class="form-control" id="password" [(ngModel)]="nouveauMotDePasse" name="password">
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        </div>
+      </form>
     </div>
   </div>
-  
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { utilisateur } from '../../models/authentification';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mon-profil',
@@ -9,6 +10,7 @@ import { utilisateur } from '../../models/authentification';
 })
 export class MonProfilComponent implements OnInit {
   utilisateur: utilisateur = {
+    _id: '',
     nom: '',
     prenom: '',
     username: '',
@@ -16,8 +18,9 @@ export class MonProfilComponent implements OnInit {
     password: '',
     cgu: false
   };
+  nouveauMotDePasse: string = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router : Router) { }
 
   ngOnInit(): void {
     const userId = this.authService.getCurrentUserId();
@@ -26,5 +29,18 @@ export class MonProfilComponent implements OnInit {
         this.utilisateur = user;
       });
     }
+  }
+
+  updateUserInfo(): void {
+    if (this.nouveauMotDePasse) {
+      this.utilisateur.password = this.nouveauMotDePasse;
+    }
+
+    this.authService.updateUser(this.utilisateur._id, this.utilisateur).subscribe(() => {
+      console.log('Informations utilisateur mises à jour avec succès');
+      this.router.navigate(['/liste-projet']); 
+    }, (error) => {
+      console.error('Erreur lors de la mise à jour des informations utilisateur :', error);
+    });
   }
 }

@@ -18,6 +18,7 @@ export class InscriptionComponent {
   }
 
   utilisateur: utilisateur = {
+    _id: '',
     nom: '',
     prenom: '',
     username: '',
