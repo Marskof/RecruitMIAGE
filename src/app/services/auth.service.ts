@@ -77,29 +77,23 @@ export class AuthService {
   }
 
   private setStorageItem(key: string, value: string): void {
-    if (localStorage) {
+    if (typeof localStorage !== 'undefined') {
       localStorage.setItem(key, value);
-    } else {
-      console.error('localStorage is not available.');
-      // Handle fallback mechanism if localStorage is not available
-    }
+    } 
   }
-
+  
   private getStorageItem(key: string): string | null {
-    if (localStorage) {
+    if (typeof localStorage !== 'undefined') {
       return localStorage.getItem(key);
     } else {
-      console.error('localStorage is not available.');
-      return null; // or return from memory or another appropriate fallback
+      return null; 
     }
   }
-
+  
   private removeStorageItem(key: string): void {
-    if (localStorage) {
+    if (typeof localStorage !== 'undefined') {
       localStorage.removeItem(key);
-    } else {
-      console.error('localStorage is not available.');
-      // Handle fallback mechanism if localStorage is not available
-    }
+    } 
   }
+  
 }
