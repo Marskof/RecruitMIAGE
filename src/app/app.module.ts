@@ -16,7 +16,8 @@ import { ModifierProjetComponent } from './Projets/modifier-projet/modifier-proj
 import { CommonModule } from '@angular/common';
 import { FormulaireConnexionComponent } from './../app/authentification/connexion/formulaire-connexion/formulaire-connexion.component';
 import { HeaderFooterComponent } from './commun/header-footer/header-footer.component';
-import { MesProjetsComponent } from './Projets/mes-projets/mes-projets.component'; // Assurez-vous d'importer le composant
+import { MesProjetsComponent } from './Projets/mes-projets/mes-projets.component';
+import { MonProfilComponent } from './authentification/mon-profil/mon-profil.component'; // Assurez-vous d'importer le composant
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { MesProjetsComponent } from './Projets/mes-projets/mes-projets.component
     ModifierProjetComponent,
     FormulaireConnexionComponent,
     HeaderFooterComponent,
-    MesProjetsComponent
+    MesProjetsComponent,
+    MonProfilComponent
   ],
   imports: [
     BrowserModule,

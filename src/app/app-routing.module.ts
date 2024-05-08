@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { CreationProjetComponent } from './Projets/creation-projet/creation-projet.component';
 import { ModifierProjetComponent } from './Projets/modifier-projet/modifier-projet.component';
 import { MesProjetsComponent } from './Projets/mes-projets/mes-projets.component';
+import { MonProfilComponent } from './authentification/mon-profil/mon-profil.component';
 
 
 //faire gaffe au auth guard
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'inscription', component: InscriptionComponent},
   {path: 'creation-projet', component: CreationProjetComponent},
   {path: 'mes-projets', component: MesProjetsComponent},
+  {path: 'mon-profil', component: MonProfilComponent},
   {path: 'modifier-projet/:id', component: ModifierProjetComponent}
 
 ];
