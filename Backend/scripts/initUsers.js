@@ -18,7 +18,7 @@ const usersData = [
 const populateDatabase = async () => {
     try {
     await Authentification.deleteMany({}); // Supprime tous les utilisateurs existants
-    
+
     const insertedUsers = await Authentification.insertMany(usersData);
     console.log(`${insertedUsers.length} utilisateurs insérés avec succès dans la base de données.`);
     } catch (error) {
@@ -30,3 +30,4 @@ const populateDatabase = async () => {
 
 // Appel de la fonction pour peupler la base de données
 populateDatabase();
+

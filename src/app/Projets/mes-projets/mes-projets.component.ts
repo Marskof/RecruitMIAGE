@@ -10,21 +10,17 @@ import {AuthService} from "../../services/auth.service";
   styleUrl: './mes-projets.component.css'
 })
 export class MesProjetsComponent implements OnInit{
-
   projects: Project[] = [];
-  userParticipeProjet: boolean = false;
 
-  constructor(private router: Router, private projectService: ProjectService,    private route: ActivatedRoute,
-              private authService: AuthService) { }
+  constructor(private router: Router, private projectService: ProjectService, private route: ActivatedRoute,
+              protected authService: AuthService) { }
 
   ngOnInit(): void {
     this.getProjectList();
   }
 
-  test() : void{
-    const currentUsername = this.authService.getCurrentUsername();
-    if(this.authService.getCurrentUserId() === currentUsername){}
-  }
+
+
 
   async getProjectList(): Promise<void> {
     try {
@@ -47,9 +43,5 @@ export class MesProjetsComponent implements OnInit{
     this.router.navigate(['/details', project._id]);
   }
 
-  //Ajouter filtre pour filtrer selon les projets java etc, nombre de participants, nombre d'etoiles, last update
-
-
-
-
+  protected readonly String = String;
 }

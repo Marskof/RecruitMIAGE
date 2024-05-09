@@ -1,9 +1,9 @@
 
 <app-nav-bar></app-nav-bar>
 <div class="border-opacity-100 p-3" style="--bs-border-opacity: 1;"></div>
-<div class="container">
+<<div class="container">
   <div class="row">
-    <div class="col-md-4 mb-3" *ngFor="let project of projects" (click)="showProjectDetails(project)">
+    <div class="col-md-4 mb-3" *ngFor="let project of projects.slice().reverse()" (click)="showProjectDetails(project)">
       <div class="card">
         <div class="card-header">
           <h5 class="card-title">{{ project.name }}</h5>
