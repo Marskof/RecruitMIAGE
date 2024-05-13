@@ -4,7 +4,8 @@
     <div class="col-md-8">
       <div class="card">
 
-        <div class="card-header text-white text-center">Créer un projet</div>
+        <div class="card-header bg-primary text-white text-center">Créer un projet</div>
+
         <div class="card-body">
           <form (ngSubmit)="onSubmit()">
             <div class="mb-1">
@@ -33,7 +34,7 @@
             </div>
 
             <div class="mb-1">
-              <label for="lang" class="form-label">Langages utilisé</label>
+              <label for="lang" class="form-label">Langages utilisés</label>
               <textarea class="form-control" id="lang" name="lang" rows="1" placeholder="HTML, CSS, PYTHON" [(ngModel)]="languages"></textarea>
             </div>
 
@@ -71,7 +72,7 @@
 
 
             <div class="mb-1">
-              <label for="urllink" class="form-label">lien vers GitHub </label>
+              <label for="urllink" class="form-label">Lien vers GitHub </label>
               <div class="input-group">
                 <input type="text" class="form-control"  name="urllink" id="urllink" aria-describedby="basic-addon3 basic-addon4" [(ngModel)]="githubUrl">
               </div>
