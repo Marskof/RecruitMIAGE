@@ -18,7 +18,7 @@
             <li *ngFor="let contributor of selectedProject.contributors">{{ contributor }}</li>
         </ul>
         <p class="card-text"><strong>Dernière mise à jour : </strong> {{ selectedProject.lastUpdate }}</p>
-        <p class="card-text"><strong>Languages : </strong></p>
+        <p class="card-text"><strong>Langages : </strong></p>
         <div class="d-flex flex-wrap">
           <div *ngFor="let language of selectedProject.languages" class="badge bg-primary me-1 mb-1">{{ language }}</div>
         </div>
