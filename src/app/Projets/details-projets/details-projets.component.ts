@@ -37,9 +37,12 @@ export class DetailsProjetsComponent implements OnInit {
     });
   }
 
+
+
   revenirPageListeProjets(): void {
     this.router.navigate(['/liste-projet']);
   }
+
 
   likeProject(): void {
     if (this.selectedProject && !this.estLike) {
@@ -63,19 +66,19 @@ export class DetailsProjetsComponent implements OnInit {
       console.error("L'utilisateur n'est pas connecté.");
       return;
     }
-  
+
     if (!this.selectedProject) {
       console.error("Aucun projet sélectionné.");
       return;
     }
-  
+
     if (this.selectedProject.contributors.length >= this.selectedProject.nombrePlaces) {
       console.error("Nombre maximum de contributeurs atteint pour ce projet.");
       return;
     }
-  
+
     this.selectedProject.contributors.push(currentUsername);
-  
+
     this.projectService.updateProject(this.selectedProject).subscribe(
       () => {
         console.log("L'utilisateur a été ajouté avec succès aux contributeurs du projet.");
@@ -86,23 +89,23 @@ export class DetailsProjetsComponent implements OnInit {
       }
     );
   }
-  
+
   nePlusParticiperProjet(): void {
     const currentUsername = this.authService.getCurrentUsername();
     if (!currentUsername) {
       console.error("L'utilisateur n'est pas connecté.");
       return;
     }
-  
+
     if (!this.selectedProject) {
       console.error("Aucun projet sélectionné.");
       return;
     }
-  
+
     const index = this.selectedProject.contributors.indexOf(currentUsername);
     if (index !== -1) {
       this.selectedProject.contributors.splice(index, 1);
-  
+
       this.projectService.updateProject(this.selectedProject).subscribe(
         () => {
           console.log("L'utilisateur a été retiré avec succès des contributeurs du projet.");
@@ -127,8 +130,8 @@ export class DetailsProjetsComponent implements OnInit {
     const currentUsername = this.authService.getCurrentUsername();
     return !!currentUsername && !!this.selectedProject && currentUsername === this.selectedProject.creator;
   }
-  
-  
+
+
 
   supprimerProjet(): void {
     if (this.selectedProject && this.estCreateurProjet()) {

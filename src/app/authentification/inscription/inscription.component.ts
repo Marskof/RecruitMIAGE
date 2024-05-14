@@ -30,7 +30,7 @@ export class InscriptionComponent {
       (response) => {
         console.log('Réponse du serveur : ', response);
         console.log('Utilisateur créé avec succès : ', response);
-        this.router.navigate(['/liste-projet']);
+        this.router.navigate(['']);
         // Réinitialiser le message d'erreur après une inscription réussie
         this.errorMessage = '';
       },
