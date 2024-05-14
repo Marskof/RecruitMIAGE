@@ -8,7 +8,7 @@ import { Project } from '../models/projets';
 })
 export class ProjectService {
 
-  private apiUrl = 'http://localhost:3000/api/projets';
+  private apiUrl = 'http://localhost:3000/api/projets'; // URL de l'API
   private languages: any;
 
   constructor(private http: HttpClient) { }
@@ -56,8 +56,6 @@ export class ProjectService {
     const url = `${this.apiUrl}/${projectId}/like`;
     return this.http.patch(url, {});
   }
-
-  //Vérifier si un utilisateur a déjà ajouté une etoile à un projet
 
   //Vérifier si un utilisateur participe déjà à un projet
   checkParticipation(projectId: string): Observable<boolean> {
