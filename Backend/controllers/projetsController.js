@@ -1,11 +1,11 @@
-const Projets = require('../models/projets');
+const Projets = require('../models/projets'); // comme les imports en java
 
 // Créer un projet
 exports.createProjet = (req, res, next) => {
     delete req.body._id;
     const project = new Projets({
-        ...req.body
-    });
+        ...req.body // Recupere toutes les donnees du body
+    }); 
     project.save()
         .then(() => res.status(201).json({ message: 'Projet enregistré !'}))
         .catch(error => res.status(400).json({ error }));

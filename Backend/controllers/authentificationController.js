@@ -1,8 +1,7 @@
-const Authentification = require('../models/authentification');
+const Authentification = require('../models/authentification'); // comme les imports en java
 const Project = require('../models/projets'); 
 
 
-// Créer un utilisateur
 // Créer un utilisateur
 exports.createUser = (req, res, next) => {
     if (!req.body || Object.keys(req.body).length === 0) {
@@ -15,14 +14,15 @@ exports.createUser = (req, res, next) => {
         return res.status(400).json({ error: 'Toutes les données requises ne sont pas fournies' });
     }
 
-    // Vérifier si l'username est déjà utilisé
+    // Vérifie si l'username est deja utilise : utilise findOne() qui est une méthode de mongoose
     Authentification.findOne({ username })
+        // le .then() est une promesse qui permet de récupérer le résultat de la requête
         .then(existingUser => {
             if (existingUser) {
                 return res.status(409).json({ error: 'Cet utilisateur existe déjà' });
             }
 
-            // Si l'username est unique, créer le nouvel utilisateur
+            
             const user = new Authentification({
                 nom,
                 prenom,
@@ -74,8 +74,7 @@ exports.deleteUser = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
 
-// Verifier si un utilisateur appartient à un projet en regardant si le nom d'utilisateur est dans la liste des contributeurs ou bien si l'utilisateur est le créateur du projet
-
+// Vérifier si un utilisateur appartient à un projet
 exports.checkAppartientProjet = (req, res, next) => {
     const userId = req.params.userId; 
     const projectId = req.params.projetId;
@@ -146,7 +145,6 @@ exports.checkInfosUser = (req, res, next) => {
         return res.status(400).json({ error: 'Nom utilisateur ou email et mot de passe non fournis' });
     }
 
-    // Vérifier si l'entrée est une adresse e-mail
     const isEmail = usernameOrEmail.includes('@');
 
     let criteres = {};
@@ -163,7 +161,6 @@ exports.checkInfosUser = (req, res, next) => {
                 return res.status(404).json({ message: 'Utilisateur non trouvé' });
             }
 
-            // Vérification du mot de passe
             if (user.password !== password) {
                 return res.status(401).json({ message: 'Mot de passe incorrect' });
             }

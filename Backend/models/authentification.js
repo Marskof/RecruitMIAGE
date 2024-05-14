@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); 
 
 const authentificationSchema = new mongoose.Schema({ // Création du schéma de données, comme une table en SQL
     nom: { type: String, required: true },
@@ -9,6 +9,6 @@ const authentificationSchema = new mongoose.Schema({ // Création du schéma de 
     });
     
 
-const Authentification = mongoose.model('Authentification', authentificationSchema);
+const Authentification = mongoose.model('Authentification', authentificationSchema); // Création du modèle de données, comme une classe en Java
 
-module.exports = Authentification;
+module.exports = Authentification; // sert a utiliser ce modele dans d'autres fichiers

@@ -1,4 +1,5 @@
 //Fichier qui sert a initialiser la base de données avec des projets
+// Fichier de peuplement de la base de données avec des projets pour tester le backend avant de créer le frontend
 
 const mongoose = require('mongoose');
 const Project = require('../models/projets');

@@ -1,9 +1,15 @@
+// code 200: OK
+// code 201: Created
+// code 400: Bad Request
+// code 404: Not Found
+// code 500: Internal Server Error
+
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const projetsController = require('./controllers/projetsController');
 const authentificationController = require('./controllers/authentificationController');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser'); // Permet de parser les requetes HTTP
 
 const app = express();
 app.use(bodyParser.json());
