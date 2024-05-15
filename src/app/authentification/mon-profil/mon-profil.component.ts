@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   templateUrl: './mon-profil.component.html',
   styleUrls: ['./mon-profil.component.css']
 })
+
+// class MonProfilComponent 
 export class MonProfilComponent implements OnInit {
   utilisateur: utilisateur = {
     _id: '',
@@ -16,12 +18,15 @@ export class MonProfilComponent implements OnInit {
     username: '',
     email: '',
     password: '',
-    cgu: false
+    cgu: false // cgu = conditions générales d'utilisation
   };
   nouveauMotDePasse: string = '';
 
+
   constructor(private authService: AuthService, private router : Router) { }
 
+
+  
   ngOnInit(): void {
     const userId = this.authService.getCurrentUserId();
     if (userId) {
@@ -31,6 +36,7 @@ export class MonProfilComponent implements OnInit {
     }
   }
 
+  // Mets à jour les informations de l'utilisateur
   updateUserInfo(): void {
     if (this.nouveauMotDePasse) {
       this.utilisateur.password = this.nouveauMotDePasse;

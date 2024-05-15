@@ -4,7 +4,6 @@ import { ListeProjetComponent } from './Projets/liste-projet/liste-projet.compon
 import { DetailsProjetsComponent } from './Projets/details-projets/details-projets.component';
 import { InscriptionComponent } from './authentification/inscription/inscription.component';
 import { FormulaireConnexionComponent } from './authentification/connexion/formulaire-connexion/formulaire-connexion.component';
-import { AppComponent } from './app.component';
 import { CreationProjetComponent } from './Projets/creation-projet/creation-projet.component';
 import { ModifierProjetComponent } from './Projets/modifier-projet/modifier-projet.component';
 import { MesProjetsComponent } from './Projets/mes-projets/mes-projets.component';

@@ -39,11 +39,12 @@ export class DetailsProjetsComponent implements OnInit {
 
 
 
+  // Méthode pour revenir à la liste des projets
   revenirPageListeProjets(): void {
     this.router.navigate(['/liste-projet']);
   }
 
-
+  // Méthode pour liker un projet
   likeProject(): void {
     if (this.selectedProject && !this.estLike) {
       this.projectService.addEtoile(this.selectedProject._id).subscribe(
@@ -60,6 +61,7 @@ export class DetailsProjetsComponent implements OnInit {
     }
   }
 
+  // Methode pour participer à un projet
   participerProjet(): void {
     const currentUsername = this.authService.getCurrentUsername();
     if (!currentUsername) {
@@ -90,6 +92,7 @@ export class DetailsProjetsComponent implements OnInit {
     );
   }
 
+  // Methode pour ne plus participer à un projet
   nePlusParticiperProjet(): void {
     const currentUsername = this.authService.getCurrentUsername();
     if (!currentUsername) {
@@ -119,20 +122,21 @@ export class DetailsProjetsComponent implements OnInit {
   }
 
 
-
+  // Méthode pour modifier un projet
   modifierProjet(): void {
     if (this.selectedProject) {
       this.router.navigate(['/modifier-projet', this.selectedProject._id]);
     }
   }
 
+  // Méthode pour verifier si l'utilisateur est le créateur du projet
   estCreateurProjet(): boolean {
     const currentUsername = this.authService.getCurrentUsername();
     return !!currentUsername && !!this.selectedProject && currentUsername === this.selectedProject.creator;
   }
 
 
-
+  // Méthode pour supprimer un projet
   supprimerProjet(): void {
     if (this.selectedProject && this.estCreateurProjet()) {
       this.projectService.deleteProject(this.selectedProject._id).subscribe(

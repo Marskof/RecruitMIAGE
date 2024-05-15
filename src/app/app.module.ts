@@ -9,7 +9,7 @@ import { ListeProjetComponent } from './Projets/liste-projet/liste-projet.compon
 import { CreationProjetComponent } from './Projets/creation-projet/creation-projet.component';
 import { InscriptionComponent } from './authentification/inscription/inscription.component';
 import { NavBarComponent } from './commun/nav-bar/nav-bar.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ModifierProjetComponent } from './Projets/modifier-projet/modifier-projet.component';
 

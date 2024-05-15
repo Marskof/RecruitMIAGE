@@ -13,10 +13,12 @@ export class ListeProjetComponent implements OnInit {
 
   constructor(private router: Router, private projectService: ProjectService) { }
 
+  // Méthode appelée à l'initialisation du composant
   ngOnInit(): void {
     this.getProjectList();
   }
 
+  // Récupère la liste des projets
   async getProjectList(): Promise<void> {
     try {
       const projects = await this.projectService.getProjects().toPromise();
@@ -31,12 +33,11 @@ export class ListeProjetComponent implements OnInit {
     }
   }
   
-
+  // Méthode pour afficher les détails d'un projet
   showProjectDetails(project: Project): void {
     console.log(project._id);
     this.router.navigate(['/details', project._id]);
   }
 
-  //Ajouter filtre pour filtrer selon les projets java etc, nombre de participants, nombre d'etoiles, last update
 
 }

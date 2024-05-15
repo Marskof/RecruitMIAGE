@@ -34,6 +34,8 @@ export class ModifierProjetComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService) { }
 
+
+    // Méthode appelée à l'initialisation du composant
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const projectId = params['id'];
@@ -49,6 +51,7 @@ export class ModifierProjetComponent implements OnInit {
     });
   }
 
+  // Méthode pour modifier un projet
   modifierProjet(): void {
     this.projetModifie.name = this.nomProjet;
     this.projetModifie.description = this.descriptionProjet;
