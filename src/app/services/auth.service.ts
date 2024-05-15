@@ -10,8 +10,8 @@ import { utilisateur } from '../models/authentification';
 export class AuthService {
 
   private apiUrl = 'http://localhost:3000/api/authentification'; // URL de l'API
-  private currentUserKey = 'currentUser'; // recupere l'id de l'utilisateur connecte
-  private currentUsername = 'currentUsername'; // recupere le nom de l'utilisateur connecte
+  private currentUserKey = 'currentUser'; // recupère l'id de l'utilisateur connecté
+  private currentUsername = 'currentUsername'; // recupère le nom de l'utilisateur connecté
 
   constructor(private http: HttpClient) { }
 

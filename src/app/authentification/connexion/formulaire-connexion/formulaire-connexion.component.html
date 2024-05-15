@@ -1,11 +1,13 @@
-<app-header-footer></app-header-footer>
+<app-header-footer></app-header-footer> <!-- > Appel au composant header-footer -->
 
+<!-- > Mise en place du titre "Connexion" sur la page -->
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-lg-4 col-md-6 col-sm-12">
       <div class="form-container text-center">
         <h2>Connexion</h2>
         <br>
+        <!-- > Création du form pour saisir les informations de connexion -->
         <form (submit)="onSubmit()">
           <div class="mb-3">
             <input type="text" class="form-control" [(ngModel)]="username" id="username" name="username" placeholder="Nom d'utilisateur ou adresse mail :">
@@ -13,18 +15,19 @@
           <div class="mb-3">
             <input type="password" class="form-control" [(ngModel)]="password" id="password" name="password" placeholder="Mot de passe">
           </div>
-          <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+          <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div> <!-- > Pour envoyer un message d'erreur si les infos saisies sont erronées -->
 
           <div id="mdp">
             <a class="mdp" href="#">Mot de passe oublié ?</a>
           </div>
           <br>
+          <!-- > Mise en place des boutons avec appel aux fonctions pour les redirections -->
           <div class="mb-3">
-            <button type="button" class="btn btn-primary" (click)="login()">Se connecter</button> <!-- Suppression de la classe float-end -->
+            <button type="button" class="btn btn-primary" (click)="login()">Se connecter</button> 
           </div>
           <br>
           <div class="mb-3">
-            <button type="button" class="btn btn-primary" (click)="navigateToInscription()">S'inscrire</button> <!-- Suppression de la classe float-end -->
+            <button type="button" class="btn btn-primary" (click)="navigateToInscription()">S'inscrire</button> 
           </div>
         </form>
 

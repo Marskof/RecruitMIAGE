@@ -1,11 +1,13 @@
-<app-header-footer></app-header-footer>
+<app-header-footer></app-header-footer> <!-- > Appel au composant header-footer -->
 
+<!-- > Mise en place du titre -->
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-lg-6">
       <div class="form-container">
         <h2>Inscription</h2>
-
+        
+        <!-- > Création du form pour que l'utilisateur saisisse ses infos -->
         <form (submit)="createUser()" #inscriptionForm="ngForm">
           <div class="mb-3">
             <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="utilisateur.nom" placeholder="Nom" required>
@@ -26,9 +28,11 @@
             <input type="checkbox" class="form-check-input" id="cgu" name="cgu" [(ngModel)]="utilisateur.cgu" required>
             <label class="form-check-label" for="cgu">J'accepte les conditions générales d'utilisation</label>
           </div>
+          <!-- > Message d'erreur -->
           <div *ngIf="errorMessage" class="error-message">
             {{ errorMessage }}
           </div>
+          <!-- > Bouton d'inscription : si tous les champs ne sont pas remplis, bouton non visible -->
           <button type="submit" class="btn btn-primary float-end" [disabled]="!inscriptionForm.valid">S'inscrire</button>
         </form>
 

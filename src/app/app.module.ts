@@ -44,7 +44,7 @@ import { MonProfilComponent } from './authentification/mon-profil/mon-profil.com
 
   ],
   exports: [
-    FormulaireConnexionComponent // Si nécessaire, exportez le composant
+    FormulaireConnexionComponent 
   ],
   providers: [
     provideClientHydration()
