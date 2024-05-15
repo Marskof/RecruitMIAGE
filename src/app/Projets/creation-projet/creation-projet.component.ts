@@ -53,15 +53,5 @@ export class CreationProjetComponent {
       }
     );
   }
-  updateLanguages(event: any) {
-    const checked = event.target.checked;
-    const value = event.target.value;
 
-    if (checked && !this.languages.includes(value)) {
-      this.languages.push(value);
-    } else if (!checked && this.languages.includes(value)) {
-      const index = this.languages.indexOf(value);
-      this.languages.splice(index, 1);
-    }
-  }
 }
